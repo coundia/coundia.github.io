@@ -1,6 +1,7 @@
 {
   "url": "https://coundia.github.io",
-  "formEndpoint": "",
+  "formEndpoint": "https://api.web3forms.com/submit",
   "bookingUrl": "",
-  "ogImage": "/og-image.png"
+  "ogImage": "/og-image.png",
+  "formAccessKey": "a5e77bbc-fcf4-4376-abac-57ed99d04e54"
 }

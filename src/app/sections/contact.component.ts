@@ -89,12 +89,15 @@ export class ContactComponent {
 
     this.status.set('sending');
     try {
-      const response = await fetch(endpoint, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify({ ...payload, lang: this.content.lang() }),
-      });
-      if (!response.ok) throw new Error(String(response.status));
+      // FormData (requête « simple ») : pas de pré-vérification CORS, comme dans l'exemple Web3Forms.
+      const body = new FormData();
+      body.append('access_key', this.content.site.formAccessKey);
+      body.append('subject', `[Portfolio] ${payload.type} - ${payload.name}`);
+      body.append('from_name', 'Portfolio coundia.github.io');
+      for (const [key, value] of Object.entries({ ...payload, lang: this.content.lang() })) body.append(key, value);
+      const response = await fetch(endpoint, { method: 'POST', body });
+      const result = (await response.json().catch(() => ({}))) as { success?: boolean };
+      if (!response.ok || result.success === false) throw new Error(String(response.status));
       this.form.reset();
       this.submitted.set(false);
       this.finish('success');

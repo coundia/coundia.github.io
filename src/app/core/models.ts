@@ -166,6 +166,8 @@ export interface ScenePalette {
 export interface SiteConfig {
   url: string;
   formEndpoint: string;
+  /** Clé publique Web3Forms (faite pour être visible dans le code du site). */
+  formAccessKey: string;
   bookingUrl: string;
   ogImage: string;
 }
