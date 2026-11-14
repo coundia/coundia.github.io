@@ -23,9 +23,12 @@ import { ContentService } from '../core/content.service';
   `,
   styles: `
     :host {
+      position: relative;
+      z-index: 20;
       display: block;
+      background: var(--color-bg);
       border-top: 1px solid var(--color-border);
-      padding-block: var(--space-7);
+      padding-block: var(--space-7) calc(var(--space-7) + 64px);
     }
     .footer {
       display: grid;

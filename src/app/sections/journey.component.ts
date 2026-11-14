@@ -4,31 +4,60 @@ import {
   DestroyRef,
   ElementRef,
   afterNextRender,
+  computed,
   inject,
   signal,
 } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 import { ContentService } from '../core/content.service';
-import { MEDIA, MOTION, loadMotion, refreshScrollSoon } from '../core/motion';
-import { SectionHeaderComponent } from '../shared/section-header.component';
+import { loadMotion, refreshScrollSoon } from '../core/motion';
+import { TechIconComponent } from '../shared/tech-icon.component';
+import { SystemService } from '../system/system.service';
 
-/** Parcours : la ligne de temps se trace au défilement, l'étape lue est mise en avant. */
+const EXPERIENCE_CLUSTERS: Record<string, string[]> = {
+  consultant: ['web', 'gateway', 'transfer', 'postgres', 'registry'],
+  devalto: ['web', 'gateway', 'import', 'postgres', 'registry', 'qa'],
+  atps: ['web', 'mobile', 'gateway', 'transfer', 'payment', 'bank', 'momo', 'ci'],
+  'money-express': ['web', 'import', 'payment', 'momo'],
+};
+
+/** 03 · Parcours : une expérience active à la fois, synchronisée avec les nœuds 3D associés. */
 @Component({
   selector: 'app-journey',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [RouterLink, SectionHeaderComponent],
+  imports: [RouterLink, TechIconComponent],
   styleUrl: './journey.component.css',
   templateUrl: './journey.component.html',
 })
 export class JourneyComponent {
   protected readonly content = inject(ContentService);
+  protected readonly system = inject(SystemService);
   private readonly host = inject<ElementRef<HTMLElement>>(ElementRef).nativeElement;
 
   protected readonly t = this.content.t;
   protected readonly experiences = this.content.experiences;
-  protected readonly education = this.content.education;
-  protected readonly active = signal<string | null>(null);
+  protected readonly activeIndex = signal(0);
+  protected readonly current = computed(() => this.experiences()[this.activeIndex()] ?? this.experiences()[0]);
+  private userLocked = false;
+
+  protected nodesLabel(id: string): string {
+    return this.system.nodeLabelsFor(EXPERIENCE_CLUSTERS[id] ?? []).join(' · ');
+  }
+
+  protected selectIndex(index: number): void {
+    this.userLocked = true;
+    this.activate(index);
+  }
+
+  private activate(index: number): void {
+    const exp = this.experiences()[index];
+    if (!exp) return;
+    this.activeIndex.set(index);
+    const nodes = EXPERIENCE_CLUSTERS[exp.id] ?? null;
+    const caption = exp.company ? `${exp.role} · ${exp.company}` : exp.role;
+    void this.system.focusCluster(nodes, caption, true);
+  }
 
   constructor() {
     const destroyRef = inject(DestroyRef);
@@ -37,46 +66,31 @@ export class JourneyComponent {
 
     afterNextRender(async () => {
       const { gsap, ScrollTrigger } = await loadMotion();
-      const q = gsap.utils.selector(this.host);
       const mm = gsap.matchMedia();
       revert = () => mm.revert();
 
       mm.add('all', () => {
-        for (const step of q('.step') as HTMLElement[]) {
-          ScrollTrigger.create({
-            trigger: step,
-            start: 'top 55%',
-            end: 'bottom 55%',
-            onToggle: (self) => self.isActive && this.active.set(step.dataset['id'] ?? null),
-          });
-        }
+        ScrollTrigger.create({
+          trigger: this.host,
+          start: 'top 55%',
+          end: 'bottom 45%',
+          onEnter: () => {
+            this.userLocked = false;
+            this.activate(this.activeIndex());
+          },
+          onEnterBack: () => {
+            this.userLocked = false;
+            this.activate(this.activeIndex());
+          },
+          onUpdate: (self) => {
+            if (this.userLocked || !self.isActive) return;
+            const total = this.experiences().length;
+            const idx = Math.min(total - 1, Math.max(0, Math.floor(self.progress * total)));
+            if (idx !== this.activeIndex()) this.activate(idx);
+          },
+        });
       });
 
-      mm.add(MEDIA.motion, () => {
-        gsap.fromTo(
-          q('.timeline__progress'),
-          { scaleY: 0 },
-          {
-            scaleY: 1,
-            ease: 'none',
-            scrollTrigger: { trigger: q('.timeline')[0], start: 'top 60%', end: 'bottom 60%', scrub: 0.6 },
-          },
-        );
-        for (const body of q('.step__body') as HTMLElement[]) {
-          gsap.fromTo(
-            body,
-            { clipPath: 'inset(0% 100% 0% 0%)', x: -24 },
-            {
-              clipPath: 'inset(0% 0% 0% 0%)',
-              x: 0,
-              duration: MOTION.duration.l,
-              ease: MOTION.ease.inOut,
-              clearProps: 'clipPath,transform',
-              scrollTrigger: { trigger: body, start: 'top 85%', once: true },
-            },
-          );
-        }
-      });
       refreshScrollSoon();
     });
   }

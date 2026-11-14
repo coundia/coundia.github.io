@@ -12,6 +12,7 @@ import {
 import { Layer, SceneNode, Vec3 } from '../core/models';
 import { SystemService } from './system.service';
 import { isoProject, labelAnchor, linkRoute, nodeMap } from './iso';
+import { LogoShape, resolveTechLogo } from './tech-logos';
 
 interface Face {
   cls: 'top' | 'left' | 'right' | 'screen';
@@ -22,6 +23,7 @@ interface FallbackNode {
   id: string;
   layers: Layer[];
   faces: Face[];
+  icon: { x: number; y: number; size: number; shapes: LogoShape[]; color: string };
   label: { x: number; y: number; w: number; text: string };
 }
 
@@ -39,7 +41,7 @@ const poly = (points: Vec3[]) => `M${points.map(pt).join('L')}Z`;
 /**
  * Architecture en isométrie. Le repli SVG (aplats, même projection, mêmes données que la scène 3D)
  * est pré-rendu dans le HTML : il s'affiche sans JavaScript, sans WebGL, en mouvement réduit
- * et pendant le chargement de Three.js. Il suit lui aussi la couche active.
+ * et pendant le chargement de Three.js, avec les vrais logos vectoriels des technologies.
  */
 @Component({
   selector: 'app-system',
@@ -56,6 +58,18 @@ const poly = (points: Vec3[]) => `M${points.map(pt).join('L')}Z`;
           @for (face of node.faces; track $index) {
             <path [class]="face.cls" [attr.d]="face.d" />
           }
+          <g [attr.transform]="'translate(' + node.icon.x + ',' + node.icon.y + ') scale(' + node.icon.size / 24 + ')'">
+            @for (s of node.icon.shapes; track $index) {
+              <path
+                class="node__logo"
+                [attr.d]="s.d"
+                [attr.fill]="s.strokeWidth ? 'none' : (s.color ?? node.icon.color)"
+                [attr.stroke]="s.strokeWidth ? (s.color ?? node.icon.color) : 'none'"
+                [attr.stroke-width]="s.strokeWidth ?? null"
+                [attr.fill-rule]="s.fillRule ?? null"
+              />
+            }
+          </g>
         </g>
       }
       @for (node of fb.nodes; track node.id) {
@@ -116,7 +130,6 @@ export class SystemComponent {
       layers: link.layers,
     }));
 
-    // Peintre : de l'arrière (x + z petit) vers l'avant.
     const sorted = [...config.nodes].sort(
       (a, b) => a.position[0] + a.position[1] - (b.position[0] + b.position[1]),
     );
@@ -124,15 +137,27 @@ export class SystemComponent {
       const anchor = labelAnchor(node);
       track(anchor);
       const [lx, ly] = isoProject(anchor);
+      const logo = resolveTechLogo(node.id);
+      const iconCenterY = node.kind === 'screen' ? node.size[1] * 0.5 : node.size[1];
+      const iconCenterZ = node.kind === 'screen' ? node.position[1] + node.size[2] / 2 : node.position[1];
+      const [ix, iy] = isoProject([node.position[0], iconCenterY, iconCenterZ]);
+      const iconSize = 0.44;
       return {
         id: node.id,
         layers: node.layers,
         faces: node.kind === 'cylinder' ? this.cylinder(node) : this.box(node),
-        label: { x: r(lx), y: r(ly), w: r(node.label.length * 0.145 + 0.2), text: node.label },
+        icon: {
+          x: r(ix - iconSize / 2),
+          y: r(iy - iconSize / 2),
+          size: iconSize,
+          shapes: logo.shapes,
+          color: logo.color,
+        },
+        label: { x: r(lx), y: r(ly), w: r(node.label.length * 0.145 + 0.25), text: node.label },
       };
     });
 
-    const pad = 0.5;
+    const pad = 0.7;
     const minX = Math.min(...xs) - pad;
     const minY = Math.min(...ys) - pad;
     const w = Math.max(...xs) - Math.min(...xs) + pad * 2;

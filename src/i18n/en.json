@@ -116,5 +116,22 @@
   },
   "expertise": {
     "inScene": "In the diagram"
+  },
+  "hud": {
+    "dragHint": "Drag to orbit 360° · Click any 3D block",
+    "rotateLeft": "Rotate left",
+    "rotateRight": "Rotate right",
+    "zoomIn": "Zoom in",
+    "zoomOut": "Zoom out",
+    "autoOrbit": "Auto-3D",
+    "reset": "3D View",
+    "pure3d": "3D 100%",
+    "pure3dExit": "Show interface",
+    "connected": "Links",
+    "yearsExp": "yrs exp.",
+    "since": "since",
+    "protocols": "Communication protocols",
+    "flows": "Active 3D flows",
+    "closeInspector": "Close"
   }
 }

@@ -2,8 +2,9 @@ import { ChangeDetectionStrategy, Component, DestroyRef, ElementRef, afterNextRe
 
 import { ContentService } from '../core/content.service';
 import { MEDIA, MOTION, loadMotion, refreshScrollSoon } from '../core/motion';
+import { SystemService } from '../system/system.service';
 
-/** Chiffres clés : compteurs animés + filets qui se tracent. */
+/** Chiffres clés en cartes HUD compactes, laissant la scène 3D respirer à gauche. */
 @Component({
   selector: 'app-stats',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -13,7 +14,7 @@ import { MEDIA, MOTION, loadMotion, refreshScrollSoon } from '../core/motion';
         <h2 id="stats-title" class="visually-hidden">{{ t().sections.stats }}</h2>
         <ul class="grid">
           @for (stat of stats(); track stat.id) {
-            <li class="stat">
+            <li class="stat hud-card">
               <span class="stat__rule" aria-hidden="true"></span>
               <p class="stat__value">
                 <span class="stat__number" [attr.data-value]="stat.value">{{ stat.value }}</span
@@ -29,25 +30,25 @@ import { MEDIA, MOTION, loadMotion, refreshScrollSoon } from '../core/motion';
   styles: `
     .grid {
       display: grid;
-      gap: var(--space-6) var(--space-5);
+      gap: var(--space-4);
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
     .stat {
       position: relative;
       display: grid;
       gap: var(--space-2);
-      padding-top: var(--space-5);
+      padding: var(--space-5);
     }
     .stat__rule {
       position: absolute;
       inset: 0 0 auto;
-      height: 1px;
-      background: var(--color-border-strong);
+      height: 2px;
+      background: var(--color-accent);
       transform-origin: left;
     }
     .stat__value {
       font-family: var(--font-display);
-      font-size: var(--fs-display-l);
+      font-size: clamp(2rem, 1.4rem + 2.4vw, 3.25rem);
       font-weight: 600;
       line-height: 1;
       font-variant-numeric: tabular-nums;
@@ -61,6 +62,8 @@ import { MEDIA, MOTION, loadMotion, refreshScrollSoon } from '../core/motion';
     }
     @media (min-width: 1024px) {
       .grid {
+        max-width: 720px;
+        margin-left: auto;
         grid-template-columns: repeat(4, minmax(0, 1fr));
       }
     }
@@ -68,6 +71,7 @@ import { MEDIA, MOTION, loadMotion, refreshScrollSoon } from '../core/motion';
 })
 export class StatsComponent {
   private readonly content = inject(ContentService);
+  private readonly system = inject(SystemService);
   private readonly host = inject<ElementRef<HTMLElement>>(ElementRef).nativeElement;
   protected readonly t = this.content.t;
   protected readonly stats = this.content.stats;
@@ -78,9 +82,21 @@ export class StatsComponent {
     destroyRef.onDestroy(() => revert?.());
 
     afterNextRender(async () => {
-      const { gsap } = await loadMotion();
+      const { gsap, ScrollTrigger } = await loadMotion();
       const mm = gsap.matchMedia();
       revert = () => mm.revert();
+
+      mm.add('all', () => {
+        ScrollTrigger.create({
+          trigger: this.host,
+          start: 'top 65%',
+          end: 'bottom 35%',
+          onToggle: (self) => {
+            if (self.isActive) void this.system.focusCluster(null, '', true);
+          },
+        });
+      });
+
       mm.add(MEDIA.motion, () => {
         const q = gsap.utils.selector(this.host);
         const trigger = { trigger: this.host, start: 'top 80%', once: true };

@@ -1,74 +1,78 @@
-<section id="journey" class="section" aria-labelledby="journey-title">
+<section id="journey" class="chapter-section" aria-labelledby="journey-title">
   <div class="container">
-    <app-section-header
-      index="02"
-      headingId="journey-title"
-      [eyebrow]="t().sections.journey"
-      [title]="t().headings.journey"
-    />
+    <div class="chapter-sticky">
+      <div class="chapter-card">
+        <p id="journey-title" class="mono chapter-eyebrow">
+          <span>03 - {{ t().sections.journey }}</span>
+          <span>0{{ activeIndex() + 1 }} / 0{{ experiences().length }}</span>
+        </p>
 
-    <div class="timeline">
-      <span class="timeline__track" aria-hidden="true"><span class="timeline__progress"></span></span>
-      <ol class="timeline__list">
-        @for (exp of experiences(); track exp.id) {
-          <li class="step" [class.step--active]="active() === exp.id" [attr.data-id]="exp.id">
-            <span class="step__dot" aria-hidden="true"></span>
-            <div class="step__body">
-              <div class="step__meta">
-                <p class="mono step__date">{{ content.formatMonth(exp.start) }} → {{ content.formatMonth(exp.end) }}</p>
-                <p class="mono muted">{{ exp.location }}</p>
-                @if (exp.remote) {
-                  <span class="tag tag--remote">{{ t().journey.remote }}</span>
-                }
-              </div>
-              <div class="step__main">
-                <h3 class="h4">{{ exp.role }}</h3>
-                <p class="step__company">
-                  @if (exp.company) {
-                    <strong>{{ exp.company }}</strong> ·
-                  }
-                  <span class="muted">{{ exp.sector }}</span>
-                </p>
-                @if (exp.highlights.length) {
-                  <ul class="step__highlights">
-                    @for (h of exp.highlights; track h) {
-                      <li>{{ h }}</li>
-                    }
-                  </ul>
-                }
-                @if (exp.stack.length) {
-                  <ul class="tag-list">
-                    @for (tag of exp.stack; track tag) {
-                      <li class="tag">{{ tag }}</li>
-                    }
-                  </ul>
-                }
-                @if (exp.caseStudySlug) {
-                  <a class="link" [routerLink]="content.caseStudyPath(exp.caseStudySlug)"
-                    >{{ t().journey.readCase }} <span aria-hidden="true">→</span></a
+        <div class="step-tabs" role="tablist" [attr.aria-label]="t().sections.journey">
+          @for (exp of experiences(); track exp.id; let i = $index) {
+            <button
+              type="button"
+              role="tab"
+              class="step-tab"
+              [attr.aria-selected]="activeIndex() === i"
+              (click)="selectIndex(i)"
+            >
+              0{{ i + 1 }}
+            </button>
+          }
+        </div>
+
+        @if (current(); as exp) {
+          <div class="journey__meta">
+            <span class="mono journey__date">{{ content.formatMonth(exp.start) }} → {{ content.formatMonth(exp.end) }}</span>
+            <span class="mono muted">{{ exp.location }}</span>
+            @if (exp.remote) {
+              <span class="tag">{{ t().journey.remote }}</span>
+            }
+          </div>
+
+          <h2 class="chapter-title">{{ exp.role }}</h2>
+          <p class="mono journey__company">
+            @if (exp.company) {
+              <strong>{{ exp.company }}</strong> ·
+            }
+            <span class="muted">{{ exp.sector }}</span>
+          </p>
+
+          @if (exp.highlights[0]; as highlight) {
+            <p class="chapter-summary">{{ highlight }}</p>
+          }
+
+          @if (exp.stack.length) {
+            <ul class="tag-list">
+              @for (tag of exp.stack.slice(0, 5); track tag) {
+                <li>
+                  <button
+                    type="button"
+                    class="tag tag--interactive"
+                    [class.is-highlighted]="system.isTechSelected(tag)"
+                    [attr.aria-pressed]="system.isTechSelected(tag)"
+                    (click)="system.selectTech(tag)"
                   >
-                }
-              </div>
-            </div>
-          </li>
-        }
+                    <app-tech-icon [name]="tag" [size]="14" />
+                    <span>{{ tag }}</span>
+                  </button>
+                </li>
+              }
+            </ul>
+          }
 
-        @for (edu of education(); track edu.id) {
-          <li class="step" [class.step--active]="active() === edu.id" [attr.data-id]="edu.id">
-            <span class="step__dot" aria-hidden="true"></span>
-            <div class="step__body">
-              <div class="step__meta">
-                <p class="mono step__date">{{ content.formatMonth(edu.start) }} → {{ content.formatMonth(edu.end) }}</p>
-                <p class="mono muted">{{ t().journey.education }}</p>
-              </div>
-              <div class="step__main">
-                <h3 class="h4">{{ edu.degree }}</h3>
-                <p class="step__company"><strong>{{ edu.school }}</strong> · {{ edu.location }}</p>
-              </div>
-            </div>
-          </li>
+          <p class="mono chapter-sync">
+            <span>{{ t().expertise.inScene }} :</span>
+            <strong>{{ nodesLabel(exp.id) }}</strong>
+          </p>
+
+          @if (exp.caseStudySlug) {
+            <a class="link journey__cta" [routerLink]="content.caseStudyPath(exp.caseStudySlug)">
+              {{ t().journey.readCase }} <span aria-hidden="true">→</span>
+            </a>
+          }
         }
-      </ol>
+      </div>
     </div>
   </div>
 </section>

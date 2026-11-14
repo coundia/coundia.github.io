@@ -1,5 +1,5 @@
-# PRD — Refonte du portfolio de Papa Coundia
-### Développeur Full Stack Senior Angular / Spring Boot — expérience immersive GSAP + Three.js
+# PRD : refonte du portfolio de Papa Coundia
+### Développeur Full Stack Senior Angular / Spring Boot, expérience immersive GSAP + Three.js
 
 | Champ | Valeur |
 |---|---|
@@ -8,7 +8,7 @@
 | Propriétaire | Papa Coundia |
 | Publication | **https://coundia.github.io/** (GitHub Pages, dépôt `coundia/coundia.github.io`) |
 | Site précédent | https://www.pcoundia.com (Astro + Angular + Tailwind) |
-| Design system | [design.md](design.md) — **aucun dégradé, aucune transparence** |
+| Design system | [design.md](design.md) (**aucun dégradé, aucune transparence**) |
 | Statut | À valider |
 
 ---
@@ -44,23 +44,23 @@ Remplacer le portfolio actuel par une **expérience web immersive et mémorable*
 
 | Persona | Besoin | Ce qui le convainc |
 |---|---|---|
-| **P1 — Recruteur technique** (Canada, France, remote) | Valider vite : stack, expérience, langue, fuseau, disponibilité | Titre et stack lisibles immédiatement, CV PDF en un clic, l'animation ne le ralentit pas |
-| **P2 — CTO / Lead technique** | Évaluer la séniorité réelle | Études de cas avec décisions d'architecture et compromis, code source public et propre, qualité d'exécution de la 3D (fluide, maîtrisée) |
-| **P3 — Client direct** (startup, PME, FinTech d'Afrique de l'Ouest, ONG) | Savoir s'il peut confier un projet de bout en bout | Expérience FinTech / paiement, offres claires, processus de collaboration, réactivité |
+| **P1 - Recruteur technique** (Canada, France, remote) | Valider vite : stack, expérience, langue, fuseau, disponibilité | Titre et stack lisibles immédiatement, CV PDF en un clic, l'animation ne le ralentit pas |
+| **P2 - CTO / Lead technique** | Évaluer la séniorité réelle | Études de cas avec décisions d'architecture et compromis, code source public et propre, qualité d'exécution de la 3D (rendu sans saccade) |
+| **P3 - Client direct** (startup, PME, FinTech d'Afrique de l'Ouest, ONG) | Savoir s'il peut confier un projet de bout en bout | Expérience FinTech / paiement, offres claires, processus de collaboration, réactivité |
 
 ---
 
 ## 4. Positionnement et message
 
 **Titre :**
-> **Papa Coundia — Développeur Full Stack Senior, Angular & Spring Boot**
-> Je conçois et je fais évoluer des plateformes critiques — paiement, transfert d'argent, SaaS multi-tenant — du front Angular aux microservices Spring.
+> **Papa Coundia - Développeur Full Stack Senior, Angular & Spring Boot**
+> Je conçois et je fais évoluer des plateformes critiques - paiement, transfert d'argent, SaaS multi-tenant - du front Angular aux microservices Spring.
 
 **Piliers :**
-1. **FinTech et paiement** — plateformes de transfert, recharge et encaissement (Upay App, Upay Business, Proximo, marque blanche Money Express), intégration avec les partenaires financiers.
-2. **SaaS B2B multi-tenant** — ~3 ans en remote pour un éditeur québécois (DevAlto) : microservices, DDD, Clean Architecture.
-3. **Modernisation** — migration SOAP → REST, optimisation des imports de fichiers volumineux, évolution de plateformes en production.
-4. **Remote international** — équipes distribuées Canada ↔ Sénégal, revues de code, QA, Agile.
+1. **FinTech et paiement** : plateformes de transfert, recharge et encaissement (Upay App, Upay Business, Proximo, marque blanche Money Express), intégration avec les partenaires financiers.
+2. **SaaS B2B multi-tenant** : ~3 ans en remote pour un éditeur québécois (DevAlto) : microservices, DDD, Clean Architecture.
+3. **Modernisation** : migration SOAP → REST, optimisation des imports de fichiers volumineux, évolution de plateformes en production.
+4. **Remote international** : équipes distribuées Canada ↔ Sénégal, revues de code, QA, Agile.
 
 **Spécialités affichées :** Angular, Spring Boot. **Compétences secondaires :** PHP, Symfony, Laravel (visibles dans la stack et les projets open source, pas dans le titre).
 
@@ -83,13 +83,13 @@ Remplacer le portfolio actuel par une **expérience web immersive et mémorable*
 | Mai 2019 → juin 2022 | Ingénieur Intégration | ATPS SA, Dakar | Migration SOAP → REST (transfert, recharge, encaissement) ; conception et intégration d'Upay App, Upay Business et Proximo avec les partenaires financiers | Angular, Spring Boot, REST/SOAP, GitLab CI, Docker, PHP |
 | Mars 2018 → mai 2019 | Développeur Web | Money Express (Groupe Chaka), Sénégal | Plateforme de transfert d'argent en marque blanche ; cadrage avec les équipes métier | PHP, AngularJS |
 
-**Formation :** Master en informatique — Université Gaston-Berger, Saint-Louis (2013 – 2017).
+**Formation :** Master en informatique, Université Gaston-Berger, Saint-Louis (2013 – 2017).
 
-### 5.2 Open source à mettre en avant
-- `spring-microservices-starter` — Spring Boot, Axon Framework, RabbitMQ, PostgreSQL : DDD + CQRS + event sourcing.
-- `cnd-api-maker` (core, Laravel, Symfony) — générateur d'API multi-tenant + RBAC, agnostique du framework.
-- `ddd-maker-bundle` — bundle Symfony qui automatise la structure DDD.
-- `coundia.github.io` — présentations.
+### 5.2 Projets open source à présenter
+- `spring-microservices-starter` : Spring Boot, Axon Framework, RabbitMQ, PostgreSQL : DDD + CQRS + event sourcing.
+- `cnd-api-maker` (core, Laravel, Symfony) : générateur d'API multi-tenant + RBAC, agnostique du framework.
+- `ddd-maker-bundle` : bundle Symfony qui automatise la structure DDD.
+- `coundia.github.io` : présentations.
 
 ### 5.3 À ne pas afficher
 Taux / temps de réponse des plateformes freelance, nombre de posts / followers, TJM.
@@ -122,7 +122,7 @@ src/i18n/
 └── en.json
 ```
 
-### 6.2 Exemple — `experiences.json`
+### 6.2 Exemple : `experiences.json`
 
 ```json
 [
@@ -165,16 +165,16 @@ src/i18n/
 - **Mise en page :** grille éditoriale, beaucoup d'espace, titres très grands, conçue d'abord pour le mobile.
 - **Thème clair** disponible (bascule mémorisée), la scène 3D s'adapte via les jetons de couleur.
 
-### 7.2 Concept 3D (Three.js) — « Le système »
+### 7.2 Concept 3D (Three.js) : « Le système »
 
 La 3D montre **ce que Papa construit** : l'architecture d'une plateforme de paiement / SaaS, en **isométrie**, comme un schéma d'architecte vivant. Chaque composant porte son nom technique.
 
 | Couche (= domaine d'expertise) | Composants dans la scène |
 |---|---|
-| `frontend` — Frontend Angular | Applications Angular (web), mobile, back-office, API Gateway |
-| `backend` — Backend Spring Boot | API Gateway, `transfer-svc`, `topup-svc`, `import-svc`, `payment-svc`, RabbitMQ, PostgreSQL, event store |
-| `payment` — Intégration & paiement | `transfer-svc`, `topup-svc`, `payment-svc`, Bank API, Mobile money |
-| `quality` — Qualité & DevOps | Git, CI/CD, Docker (registre) qui déploie les services |
+| `frontend` : Frontend Angular | Applications Angular (web), mobile, back-office, API Gateway |
+| `backend` : Backend Spring Boot | API Gateway, `transfer-svc`, `topup-svc`, `import-svc`, `payment-svc`, RabbitMQ, PostgreSQL, event store |
+| `payment` : Intégration & paiement | `transfer-svc`, `topup-svc`, `payment-svc`, Bank API, Mobile money |
+| `quality` : Qualité & DevOps | Git, CI/CD, Docker (registre) qui déploie les services |
 
 - Des **paquets** (requêtes, transactions) circulent sur des liens orthogonaux façon circuit imprimé : clients → gateway → services → bus → bases, services → partenaires financiers.
 - **Lien direct avec le contenu :** les couches portent les identifiants de `expertise.json` ; les rôles du hero (`profile.roles`) pointent vers une couche.
@@ -247,7 +247,7 @@ Plugins : **ScrollTrigger**, **SplitText**, **Flip**, **ScrambleText** (tous gra
 
 ## 10. Exigences non fonctionnelles
 
-### 10.1 Performance — la 3D ne doit rien coûter
+### 10.1 Performance : la 3D ne doit rien coûter
 - **LCP < 2,0 s** en 4G simulée : l'élément LCP est **le titre texte**, jamais le canvas.
 - Three.js et la scène sont dans un **chunk séparé**, chargé **après** le premier affichage (`@defer` / `requestIdleCallback`). JS initial (hors 3D) < 150 ko compressés ; chunk 3D < 200 ko compressés (imports ciblés de Three.js, pas le paquet complet).
 - **CLS < 0,05** ; **INP < 200 ms** ; **60 fps** visés sur desktop, 30 fps minimum sur mobile milieu de gamme.
@@ -363,6 +363,6 @@ Visiteur ─► GitHub Pages (coundia.github.io) ─► HTML pré-rendu (contenu
 | Q2 | Quels **chiffres** et quels **noms de clients** peut-on publier ? |
 | Q3 | Cible prioritaire : **missions freelance**, **CDI remote**, ou les deux ? |
 | Q4 | Qui peut fournir des **témoignages** ? |
-| Q5 | **Certifications** à mettre en avant ? |
+| Q5 | **Certifications** à afficher ? |
 | Q6 | **pcoundia.com** : simple redirection vers https://coundia.github.io/, ou domaine personnalisé du dépôt (le site serait alors servi sur pcoundia.com) ? |
 | Q7 | Les **présentations** actuellement sur coundia.github.io doivent-elles rester en ligne (sous `/presentations/`) ? |

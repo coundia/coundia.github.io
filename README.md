@@ -1,9 +1,9 @@
-# Portfolio — Papa Coundia
+# Portfolio - Papa Coundia
 
 Refonte du portfolio : Angular (pré-rendu statique), GSAP et Three.js, publié sur **https://coundia.github.io/**.
 
 - Produit : [prd/prd.md](prd/prd.md)
-- Design system : [prd/design.md](prd/design.md) — **aucun dégradé, aucune transparence**
+- Design system : [prd/design.md](prd/design.md) (**aucun dégradé, aucune transparence**)
 
 ## Commandes
 
@@ -56,7 +56,7 @@ src/app/
 - Une seule scène WebGL, déplacée entre le hero et l'expertise ; rendu en pause hors écran et onglet masqué.
 - Les couches du schéma (`frontend`, `backend`, `payment`, `quality`) sont les ids de `expertise.json` : le hero et l'expertise pilotent la caméra.
 - Repli SVG si WebGL indisponible, mouvement réduit, mode économie de données ou appareil faible.
-- Animations : révélations par masque (`clip-path`), translations, tracés, ScrambleText, Flip — jamais d'opacité.
+- Animations : révélations par masque (`clip-path`), translations, tracés, ScrambleText, Flip. Jamais d'opacité.
 
 ## Déploiement
 

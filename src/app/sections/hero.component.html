@@ -1,5 +1,5 @@
 <div class="hero container">
-  <div class="hero__text">
+  <div class="hero__card chapter-card">
     <p class="badge" data-intro>
       <span class="badge__dot" [class.badge__dot--off]="profile().availability.status === 'unavailable'"></span>
       {{ profile().availability.label }}
@@ -10,13 +10,18 @@
       <span class="line-mask"><span class="name__line" data-intro>{{ profile().lastName }}</span></span>
     </h1>
 
-    <p class="role h3" data-intro>
+    <p class="role h4" data-intro>
       {{ profile().title }}<br />
       <span class="role__stack">{{ profile().headline }}</span>
-      <span class="mono role__ticker" aria-hidden="true">&gt; <span class="role__word">{{ profile().roles[0].label }}</span><span class="caret"></span></span>
     </p>
 
-    <p class="body-l tagline muted prose" data-intro>{{ profile().tagline }}</p>
+    <p class="chapter-summary tagline" data-intro>{{ profile().tagline }}</p>
+
+    <ul class="tag-list" data-intro>
+      @for (item of profile().summaryStrip.slice(0, 3); track item) {
+        <li class="tag">{{ item }}</li>
+      }
+    </ul>
 
     <div class="ctas" data-intro>
       <a class="btn btn--primary" appMagnetic [routerLink]="home()" fragment="contact"
@@ -24,56 +29,5 @@
       >
       <a class="btn" appMagnetic [routerLink]="cv()">{{ t().hero.cv }}</a>
     </div>
-  </div>
-
-  <figure class="window" data-intro>
-    <div class="window__bar mono">
-      <span class="window__dots" aria-hidden="true"><i></i><i></i><i></i></span>
-      <span class="window__title">{{ t().hero.windowTitle }}</span>
-      <span class="window__status"
-        >{{ t().hero.layer }} : <strong>{{ activeLabel() }}</strong></span
-      >
-    </div>
-
-    <div class="window__body">
-      <app-system [label]="t().hero.sceneLabel" />
-    </div>
-
-    <figcaption class="window__foot">
-      <span class="mono window__hint">{{ t().hero.explore }}</span>
-      <!-- Toujours présent (hauteur réservée) : changer de couche ne décale pas la mise en page. -->
-      <p class="mono window__nodes" [class.is-empty]="!activeNodes()">
-        <span>{{ t().expertise.inScene }} :</span> {{ activeNodes() }}
-      </p>
-      <div class="chips" role="group" [attr.aria-label]="t().hero.explore">
-        <button
-          type="button"
-          class="chip mono"
-          [attr.aria-pressed]="system.activeLayer() === null"
-          (click)="select(null)"
-        >
-          {{ t().hero.overview }}
-        </button>
-        @for (layer of layers(); track layer.id) {
-          <button
-            type="button"
-            class="chip mono"
-            [attr.aria-pressed]="system.activeLayer() === layer.id"
-            (click)="select(layer.id)"
-          >
-            {{ layer.label }}
-          </button>
-        }
-      </div>
-    </figcaption>
-  </figure>
-
-  <div class="strip mono" data-intro>
-    <ul class="strip__list">
-      @for (item of profile().summaryStrip; track item) {
-        <li>{{ item }}</li>
-      }
-    </ul>
-    <a class="strip__scroll" href="#stats">{{ t().hero.scroll }} <span aria-hidden="true">↓</span></a>
   </div>
 </div>

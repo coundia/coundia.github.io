@@ -1,97 +1,90 @@
-<section id="contact" class="contact" aria-labelledby="contact-title">
-  <div class="container grid">
-    <div class="intro">
-      <p class="mono">06 - {{ t().sections.contact }}</p>
-      <h2 id="contact-title" class="display-l" appReveal="lines">{{ t().headings.contact }}</h2>
-      <p class="body-l">{{ t().contact.intro }}</p>
-      <dl class="facts">
-        <div>
-          <dt class="mono">{{ t().contact.location }}</dt>
-          <dd>{{ profile().location }}</dd>
-        </div>
-        <div>
-          <dt class="mono">{{ t().contact.timezone }}</dt>
-          <dd>{{ profile().timezone }}</dd>
-        </div>
-        <div>
-          <dt class="mono">{{ t().contact.direct }}</dt>
-          <dd class="direct">
-            @if (profile().email) {
-              <a [href]="'mailto:' + profile().email">{{ profile().email }}</a>
-            }
-            @for (link of profile().links; track link.url) {
-              <a [href]="link.url" target="_blank" rel="noopener">{{ link.label }} ↗</a>
-            }
-          </dd>
-        </div>
-      </dl>
-    </div>
+<section id="contact" class="chapter-section contact" aria-labelledby="contact-title">
+  <div class="container">
+    <div class="chapter-card contact__card">
+      <p class="mono chapter-eyebrow">
+        <span>06 - {{ t().sections.contact }}</span>
+        <span>{{ profile().location }}</span>
+      </p>
 
-    <form class="card" [formGroup]="form" (ngSubmit)="submit()" novalidate appReveal="rise">
-      <div class="row">
-        <div class="field" [class.field--invalid]="error('name')">
-          <label for="cf-name">{{ t().contact.name }}</label>
-          <input id="cf-name" type="text" formControlName="name" autocomplete="name" [attr.aria-invalid]="!!error('name')" [attr.aria-describedby]="error('name') ? 'cf-name-error' : null" />
-          @if (error('name'); as msg) {
-            <p id="cf-name-error" class="field__error">{{ msg }}</p>
-          }
-        </div>
-        <div class="field" [class.field--invalid]="error('email')">
-          <label for="cf-email">{{ t().contact.email }}</label>
-          <input id="cf-email" type="email" formControlName="email" autocomplete="email" [attr.aria-invalid]="!!error('email')" [attr.aria-describedby]="error('email') ? 'cf-email-error' : null" />
-          @if (error('email'); as msg) {
-            <p id="cf-email-error" class="field__error">{{ msg }}</p>
-          }
-        </div>
-      </div>
+      <h2 id="contact-title" class="chapter-title">{{ t().headings.contact }}</h2>
+      <p class="chapter-summary">{{ t().contact.intro }}</p>
 
-      <div class="row">
-        <div class="field">
-          <label for="cf-company">{{ t().contact.company }}</label>
-          <input id="cf-company" type="text" formControlName="company" autocomplete="organization" />
-        </div>
-        <div class="field">
-          <label for="cf-type">{{ t().contact.type }}</label>
-          <select id="cf-type" formControlName="type">
-            @for (type of types; track type) {
-              <option [value]="type">{{ t().contact.types[type] }}</option>
-            }
-          </select>
-        </div>
-      </div>
-
-      <div class="field">
-        <label for="cf-budget">{{ t().contact.budget }}</label>
-        <input id="cf-budget" type="text" formControlName="budget" />
-      </div>
-
-      <div class="field" [class.field--invalid]="error('message')">
-        <label for="cf-message">{{ t().contact.message }}</label>
-        <textarea id="cf-message" rows="6" formControlName="message" [attr.aria-invalid]="!!error('message')" [attr.aria-describedby]="error('message') ? 'cf-message-error' : null"></textarea>
-        @if (error('message'); as msg) {
-          <p id="cf-message-error" class="field__error">{{ msg }}</p>
+      <div class="contact__direct">
+        @if (profile().email) {
+          <a class="mono link" [href]="'mailto:' + profile().email">{{ profile().email }}</a>
+        }
+        @for (link of profile().links; track link.url) {
+          <a class="mono link" [href]="link.url" target="_blank" rel="noopener">{{ link.label }} ↗</a>
         }
       </div>
 
-      <div class="trap" aria-hidden="true">
-        <label for="cf-website">Website</label>
-        <input id="cf-website" type="text" formControlName="website" tabindex="-1" autocomplete="off" />
-      </div>
+      <form class="contact__form" [formGroup]="form" (ngSubmit)="submit()" novalidate>
+        <div class="contact__row">
+          <div class="field" [class.field--invalid]="error('name')">
+            <label for="cf-name">{{ t().contact.name }}</label>
+            <input
+              id="cf-name"
+              type="text"
+              formControlName="name"
+              autocomplete="name"
+              [attr.aria-invalid]="!!error('name')"
+              [attr.aria-describedby]="error('name') ? 'cf-name-error' : null"
+            />
+            @if (error('name'); as msg) {
+              <p id="cf-name-error" class="field__error">{{ msg }}</p>
+            }
+          </div>
 
-      <button type="submit" class="btn btn--primary submit" appMagnetic [disabled]="status() === 'sending'">
-        {{ status() === 'sending' ? t().contact.sending : t().contact.submit }}
-        <span class="btn__arrow" aria-hidden="true">→</span>
-      </button>
+          <div class="field" [class.field--invalid]="error('email')">
+            <label for="cf-email">{{ t().contact.email }}</label>
+            <input
+              id="cf-email"
+              type="email"
+              formControlName="email"
+              autocomplete="email"
+              [attr.aria-invalid]="!!error('email')"
+              [attr.aria-describedby]="error('email') ? 'cf-email-error' : null"
+            />
+            @if (error('email'); as msg) {
+              <p id="cf-email-error" class="field__error">{{ msg }}</p>
+            }
+          </div>
+        </div>
 
-      @if (status() === 'success' || status() === 'error' || status() === 'unavailable') {
-        <p #result class="result" [class.result--error]="status() !== 'success'" tabindex="-1" role="status">
-          @switch (status()) {
-            @case ('success') { {{ t().contact.success }} }
-            @case ('error') { {{ t().contact.error }} }
-            @default { {{ t().contact.unavailable }} }
+        <div class="field" [class.field--invalid]="error('message')">
+          <label for="cf-message">{{ t().contact.message }}</label>
+          <textarea
+            id="cf-message"
+            rows="4"
+            formControlName="message"
+            [attr.aria-invalid]="!!error('message')"
+            [attr.aria-describedby]="error('message') ? 'cf-message-error' : null"
+          ></textarea>
+          @if (error('message'); as msg) {
+            <p id="cf-message-error" class="field__error">{{ msg }}</p>
           }
-        </p>
-      }
-    </form>
+        </div>
+
+        <div class="trap" aria-hidden="true">
+          <label for="cf-website">Website</label>
+          <input id="cf-website" type="text" formControlName="website" tabindex="-1" autocomplete="off" />
+        </div>
+
+        <button type="submit" class="btn btn--primary submit" appMagnetic [disabled]="status() === 'sending'">
+          {{ status() === 'sending' ? t().contact.sending : t().contact.submit }}
+          <span class="btn__arrow" aria-hidden="true">→</span>
+        </button>
+
+        @if (status() === 'success' || status() === 'error' || status() === 'unavailable') {
+          <p #result class="result" [class.result--error]="status() !== 'success'" tabindex="-1" role="status">
+            @switch (status()) {
+              @case ('success') { {{ t().contact.success }} }
+              @case ('error') { {{ t().contact.error }} }
+              @default { {{ t().contact.unavailable }} }
+            }
+          </p>
+        }
+      </form>
+    </div>
   </div>
 </section>

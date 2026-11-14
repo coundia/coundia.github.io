@@ -1,49 +1,52 @@
-<section id="expertise" class="section section--surface" aria-labelledby="expertise-title">
+<section id="expertise" class="chapter-section section--surface" aria-labelledby="expertise-title">
   <div class="container">
-    <app-section-header
-      index="01"
-      headingId="expertise-title"
-      [eyebrow]="t().sections.expertise"
-      [title]="t().headings.expertise"
-    />
+    <div class="chapter-sticky">
+      <div class="chapter-card">
+        <p id="expertise-title" class="mono chapter-eyebrow">
+          <span>01 - {{ t().sections.expertise }}</span>
+          <span>0{{ activeIndex() + 1 }} / 0{{ expertise().length }}</span>
+        </p>
 
-    <div class="layout">
-      <ol class="steps">
-        @for (item of expertise(); track item.id; let i = $index) {
-          <li class="step" [class.is-active]="active() === item.id" [attr.data-layer]="item.id">
-            <div class="step__card">
-              <p class="mono step__index">0{{ i + 1 }} / 0{{ expertise().length }}</p>
-              <h3 class="h3">{{ item.title }}</h3>
-              <p class="muted">{{ item.description }}</p>
-              <ul class="tag-list">
-                @for (tag of item.items; track tag) {
-                  <li class="tag">{{ tag }}</li>
-                }
-              </ul>
-              <p class="mono step__scene">
-                <span class="step__scene-label">{{ t().expertise.inScene }}</span>
-                {{ nodesFor(item.id) }}
-              </p>
-            </div>
-          </li>
-        }
-      </ol>
-
-      <div class="viewer" aria-hidden="true">
-        <div class="viewer__sticky">
-          <div class="window">
-            <div class="window__bar mono">
-              <span class="window__dots"><i></i><i></i><i></i></span>
-              <span class="window__title">{{ t().hero.windowTitle }}</span>
-              <span class="window__status"
-                >{{ t().hero.layer }} : <strong>{{ activeTitle() }}</strong></span
-              >
-            </div>
-            <div class="window__body">
-              <app-system [label]="t().hero.sceneLabel" />
-            </div>
-          </div>
+        <div class="step-tabs" role="tablist" [attr.aria-label]="t().sections.expertise">
+          @for (item of expertise(); track item.id; let i = $index) {
+            <button
+              type="button"
+              role="tab"
+              class="step-tab"
+              [attr.aria-selected]="activeIndex() === i"
+              (click)="selectIndex(i)"
+            >
+              0{{ i + 1 }}
+            </button>
+          }
         </div>
+
+        @if (current(); as item) {
+          <h2 class="chapter-title">{{ item.title }}</h2>
+          <p class="chapter-summary">{{ item.description }}</p>
+
+          <ul class="tag-list">
+            @for (tag of item.items.slice(0, 4); track tag) {
+              <li>
+                <button
+                  type="button"
+                  class="tag tag--interactive"
+                  [class.is-highlighted]="system.isTechSelected(tag)"
+                  [attr.aria-pressed]="system.isTechSelected(tag)"
+                  (click)="system.selectTech(tag)"
+                >
+                  <app-tech-icon [name]="tag" [size]="14" />
+                  <span>{{ tag }}</span>
+                </button>
+              </li>
+            }
+          </ul>
+
+          <p class="mono chapter-sync">
+            <span>{{ t().expertise.inScene }} :</span>
+            <strong>{{ nodesFor(item.id) }}</strong>
+          </p>
+        }
       </div>
     </div>
   </div>

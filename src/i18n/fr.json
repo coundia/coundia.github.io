@@ -116,5 +116,22 @@
   },
   "expertise": {
     "inScene": "Dans le schéma"
+  },
+  "hud": {
+    "dragHint": "Glisser pour pivoter 360° · Cliquer un bloc 3D",
+    "rotateLeft": "Pivoter à gauche",
+    "rotateRight": "Pivoter à droite",
+    "zoomIn": "Zoomer",
+    "zoomOut": "Dézoomer",
+    "autoOrbit": "Auto-3D",
+    "reset": "Vue 3D",
+    "pure3d": "3D 100%",
+    "pure3dExit": "Afficher l'interface",
+    "connected": "Connexions",
+    "yearsExp": "ans d'exp.",
+    "since": "depuis",
+    "protocols": "Protocoles de communication",
+    "flows": "Flux 3D actifs",
+    "closeInspector": "Fermer"
   }
 }

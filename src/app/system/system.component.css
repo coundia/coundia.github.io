@@ -34,7 +34,7 @@
   stroke: var(--scene-link-active);
 }
 
-.node path {
+.node > path {
   stroke: var(--scene-node-edge);
   stroke-width: 0.02;
   stroke-linejoin: round;
@@ -56,7 +56,7 @@
   fill: var(--scene-screen);
 }
 
-.node.is-active path {
+.node.is-active > path {
   stroke: var(--scene-active-edge);
 }
 

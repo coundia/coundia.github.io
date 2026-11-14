@@ -1,8 +1,8 @@
-# Design System — Portfolio Papa Coundia
+# Design system du portfolio de Papa Coundia
 
 | Champ | Valeur |
 |---|---|
-| Version | 1.2 — schéma d'architecture 3D |
+| Version | 1.2 (schéma d'architecture 3D) |
 | Date | 14 novembre 2026 |
 | Document lié | [prd.md](prd.md) |
 | Statut | À valider |
@@ -13,21 +13,21 @@
 
 Ces deux règles s'appliquent **partout** : CSS, SVG, images, scène Three.js et animations GSAP.
 
-### ❌ Aucun dégradé
+### Aucun dégradé
 - Pas de `linear-gradient`, `radial-gradient`, `conic-gradient`, ni leurs variantes `repeating-*`.
 - Pas de dégradé dans les SVG (`<linearGradient>`, `<radialGradient>`).
 - Pas d'ombre floue (`box-shadow` ou `text-shadow` avec flou, `filter: drop-shadow`) : un flou produit un dégradé.
 - Pas de `filter: blur()`.
 - En 3D : pas de bloom, pas de halo, pas de brouillard (`fog`), pas de lumière (donc pas d'ombrage dégradé), pas d'interpolation de couleur le long des liens.
 
-### ❌ Aucune transparence
+### Aucune transparence
 - Pas de couleur avec canal alpha : `rgba()`, `hsla()`, `#RRGGBBAA`, `#RGBA`, `color-mix(… transparent)`, mot-clé `transparent`.
 - Pas de `opacity` inférieure à 1, ni dans le CSS ni dans les animations (`opacity`, `autoAlpha` interdits dans GSAP).
 - Pas de `backdrop-filter`, pas d'effet verre (« glassmorphism »), pas de voile semi-transparent sur les images ou derrière les modales.
 - Pas de `mix-blend-mode`.
 - En 3D : `renderer` opaque (`alpha: false`), matériaux opaques (`transparent: false`), pas de `AdditiveBlending`.
 
-### ✅ Ce qu'on utilise à la place
+### Ce qu'on utilise à la place
 
 | Besoin habituel | Solution sans dégradé ni transparence |
 |---|---|
@@ -54,49 +54,49 @@ Ces deux règles s'appliquent **partout** : CSS, SVG, images, scène Three.js et
 
 ## 2. Couleurs
 
-Toutes les couleurs sont **pleines** (hexadécimal à 6 chiffres). Les contrastes ont été calculés selon la formule WCAG 2.2.
+Toutes les couleurs sont **pleines** (hexadécimal à 6 chiffres). Les contrastes ont été calculés selon la formule WCAG 2.2. Sauf mention contraire, ils respectent le niveau AA : 4,5 : 1 pour le texte, 3 : 1 pour les bordures de contrôles.
 
 ### 2.1 Thème sombre (par défaut)
 
 | Jeton | Valeur | Usage | Contraste sur `bg` |
 |---|---|---|---|
-| `bg` | `#0B0D12` | Fond de page | — |
-| `surface-1` | `#12151C` | Cartes, sections alternées | — |
-| `surface-2` | `#1A1E27` | Survol de carte, champs, éléments imbriqués | — |
-| `border` | `#272C37` | Filets, séparateurs (décoratifs) | — |
-| `border-strong` | `#5D6676` | Bordures de champs et contrôles | 3,36 : 1 ✅ (≥ 3 : 1) |
-| `text` | `#F4F6FA` | Texte principal | 17,96 : 1 ✅ |
-| `text-muted` | `#A7AFBD` | Texte secondaire, métadonnées, étiquettes | 8,80 : 1 ✅ |
-| `text-subtle` | `#808999` | Texte discret | 5,51 : 1 ✅ |
+| `bg` | `#0B0D12` | Fond de page | - |
+| `surface-1` | `#12151C` | Cartes, sections alternées | - |
+| `surface-2` | `#1A1E27` | Survol de carte, champs, éléments imbriqués | - |
+| `border` | `#272C37` | Filets, séparateurs (décoratifs) | - |
+| `border-strong` | `#5D6676` | Bordures de champs et contrôles | 3,36 : 1 (≥ 3 : 1) |
+| `text` | `#F4F6FA` | Texte principal | 17,96 : 1 |
+| `text-muted` | `#A7AFBD` | Texte secondaire, métadonnées, étiquettes | 8,80 : 1 |
+| `text-subtle` | `#808999` | Texte discret | 5,51 : 1 |
 | `text-disabled` | `#4A5160` | Texte désactivé | exempté |
-| `accent` | `#3B82F6` | Bleu : bouton principal, liens, éléments actifs | 5,28 : 1 ✅ |
-| `accent-hover` | `#60A5FA` | Survol de l'accent | 7,64 : 1 ✅ |
-| `on-accent` | `#0B0D12` | Texte sur fond `accent` | 5,28 : 1 ✅ |
-| `secondary` | `#93C5FD` | Bleu clair (réservé) | 10,78 : 1 ✅ |
-| `success` | `#4ADE80` | Disponibilité, envoi réussi | 11,15 : 1 ✅ |
-| `error` | `#F87171` | Erreurs de formulaire | 7,03 : 1 ✅ |
-| `warning` | `#FBBF24` | Avertissements (non utilisé) | 11,64 : 1 ✅ |
+| `accent` | `#3B82F6` | Bleu : bouton principal, liens, éléments actifs | 5,28 : 1 |
+| `accent-hover` | `#60A5FA` | Survol de l'accent | 7,64 : 1 |
+| `on-accent` | `#0B0D12` | Texte sur fond `accent` | 5,28 : 1 |
+| `secondary` | `#93C5FD` | Bleu clair (réservé) | 10,78 : 1 |
+| `success` | `#4ADE80` | Disponibilité, envoi réussi | 11,15 : 1 |
+| `error` | `#F87171` | Erreurs de formulaire | 7,03 : 1 |
+| `warning` | `#FBBF24` | Avertissements (non utilisé) | 11,64 : 1 |
 
 ### 2.2 Thème clair
 
 | Jeton | Valeur | Contraste sur `bg` |
 |---|---|---|
-| `bg` | `#F6F8FB` | — |
-| `surface-1` | `#FFFFFF` | — |
-| `surface-2` | `#EBEFF5` | — |
-| `border` | `#D9DFE8` | — |
-| `border-strong` | `#7C8596` | 3,49 : 1 ✅ |
-| `text` | `#0B0D12` | 18,27 : 1 ✅ |
-| `text-muted` | `#4A5363` | 7,29 : 1 ✅ |
-| `text-subtle` | `#6B7385` | 4,47 : 1 ⚠️ grand texte seulement |
+| `bg` | `#F6F8FB` | - |
+| `surface-1` | `#FFFFFF` | - |
+| `surface-2` | `#EBEFF5` | - |
+| `border` | `#D9DFE8` | - |
+| `border-strong` | `#7C8596` | 3,49 : 1 |
+| `text` | `#0B0D12` | 18,27 : 1 |
+| `text-muted` | `#4A5363` | 7,29 : 1 |
+| `text-subtle` | `#6B7385` | 4,47 : 1, grand texte seulement |
 | `text-disabled` | `#A3ABB8` | exempté |
-| `accent` | `#1D4ED8` | 6,30 : 1 ✅ |
-| `accent-hover` | `#1E40AF` | 8,20 : 1 ✅ |
-| `on-accent` | `#FFFFFF` | 6,70 : 1 ✅ |
-| `secondary` | `#1E3A8A` | 9,74 : 1 ✅ |
-| `success` | `#15803D` | 4,71 : 1 ✅ |
-| `error` | `#B91C1C` | 6,08 : 1 ✅ |
-| `warning` | `#92400E` | 6,66 : 1 ✅ |
+| `accent` | `#1D4ED8` | 6,30 : 1 |
+| `accent-hover` | `#1E40AF` | 8,20 : 1 |
+| `on-accent` | `#FFFFFF` | 6,70 : 1 |
+| `secondary` | `#1E3A8A` | 9,74 : 1 |
+| `success` | `#15803D` | 4,71 : 1 |
+| `error` | `#B91C1C` | 6,08 : 1 |
+| `warning` | `#92400E` | 6,66 : 1 |
 
 ### 2.3 Règles d'usage
 - **Une seule teinte : le bleu.** Tout le reste est neutre (fond, surfaces, textes, étiquettes, bordures). Le vert et le rouge ne servent qu'aux états.
@@ -244,7 +244,7 @@ Avec `prefers-reduced-motion: reduce` (via `gsap.matchMedia()`) :
 
 ---
 
-## 8. Scène 3D (Three.js) — « Le système »
+## 8. Scène 3D (Three.js) : « Le système »
 
 ### 8.1 Rendu
 - **Caméra orthographique en isométrie vraie** (direction (1, 1, 1)) : un schéma d'architecte, pas une perspective de jeu vidéo. Le zoom et le point visé changent selon la couche.
@@ -409,7 +409,7 @@ Conformément au principe du PRD (données séparées de l'interface), les jeton
 Le JSON Schema de `tokens.json` n'accepte que des couleurs `^#[0-9A-F]{6}$` : une couleur avec alpha fait échouer le build.
 
 ### 12.2 Garde-fous automatiques (CI)
-Les règles du § 0 sont **vérifiées automatiquement**, pas seulement documentées :
+Les règles du § 0 sont documentées ici et **vérifiées automatiquement** :
 
 - **Stylelint**
   - `function-disallowed-list` : `linear-gradient`, `radial-gradient`, `conic-gradient`, `repeating-linear-gradient`, `repeating-radial-gradient`, `repeating-conic-gradient`, `rgba`, `hsla`, `color-mix`, `blur`, `drop-shadow`.

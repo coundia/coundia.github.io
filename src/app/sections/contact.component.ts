@@ -1,6 +1,7 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  DestroyRef,
   ElementRef,
   Injector,
   afterNextRender,
@@ -11,30 +12,54 @@ import {
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 
 import { ContentService } from '../core/content.service';
-import { MOTION, loadMotion, prefersReducedMotion } from '../core/motion';
+import { MOTION, loadMotion, prefersReducedMotion, refreshScrollSoon } from '../core/motion';
 import { MagneticDirective } from '../shared/magnetic.directive';
-import { RevealDirective } from '../shared/reveal.directive';
+import { SystemService } from '../system/system.service';
 
 type Status = 'idle' | 'sending' | 'success' | 'error' | 'unavailable';
 
+/** 06 · Contact : fiche compacte à gauche face à la vue d'ensemble 3D. */
 @Component({
   selector: 'app-contact',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [ReactiveFormsModule, RevealDirective, MagneticDirective],
+  imports: [ReactiveFormsModule, MagneticDirective],
   styleUrl: './contact.component.css',
   templateUrl: './contact.component.html',
 })
 export class ContactComponent {
   private readonly content = inject(ContentService);
+  private readonly system = inject(SystemService);
+  private readonly host = inject<ElementRef<HTMLElement>>(ElementRef).nativeElement;
   private readonly fb = inject(FormBuilder);
   private readonly injector = inject(Injector);
   private readonly result = viewChild<ElementRef<HTMLElement>>('result');
+
+  constructor() {
+    const destroyRef = inject(DestroyRef);
+    let revert: (() => void) | undefined;
+    destroyRef.onDestroy(() => revert?.());
+
+    afterNextRender(async () => {
+      const { gsap, ScrollTrigger } = await loadMotion();
+      const mm = gsap.matchMedia();
+      revert = () => mm.revert();
+      mm.add('all', () => {
+        ScrollTrigger.create({
+          trigger: this.host,
+          start: 'top 60%',
+          end: 'bottom 40%',
+          onEnter: () => void this.system.focusCluster(null, '', true),
+          onEnterBack: () => void this.system.focusCluster(null, '', true),
+        });
+      });
+      refreshScrollSoon();
+    });
+  }
 
   protected readonly t = this.content.t;
   protected readonly profile = this.content.profile;
   protected readonly status = signal<Status>('idle');
   protected readonly submitted = signal(false);
-  protected readonly types = ['freelance', 'job', 'consulting', 'other'] as const;
 
   protected readonly form = this.fb.nonNullable.group({
     name: ['', [Validators.required, Validators.maxLength(120)]],
@@ -43,7 +68,7 @@ export class ContactComponent {
     type: ['freelance' as string, Validators.required],
     budget: ['', Validators.maxLength(120)],
     message: ['', [Validators.required, Validators.minLength(20), Validators.maxLength(5000)]],
-    website: [''], // champ piège anti-spam : doit rester vide
+    website: [''],
   });
 
   protected error(field: 'name' | 'email' | 'message'): string | null {
@@ -74,11 +99,7 @@ export class ContactComponent {
       const email = this.profile().email;
       if (email) {
         const subject = encodeURIComponent(`[${payload.type}] ${payload.name}`);
-        const body = encodeURIComponent(
-          `${payload.message}\n\n- ${payload.name} (${payload.email})${payload.company ? `, ${payload.company}` : ''}${
-            payload.budget ? `\nBudget : ${payload.budget}` : ''
-          }`,
-        );
+        const body = encodeURIComponent(`${payload.message}\n\n- ${payload.name} (${payload.email})`);
         window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
         this.finish('success');
       } else {
@@ -89,7 +110,6 @@ export class ContactComponent {
 
     this.status.set('sending');
     try {
-      // FormData (requête « simple ») : pas de pré-vérification CORS, comme dans l'exemple Web3Forms.
       const body = new FormData();
       body.append('access_key', this.content.site.formAccessKey);
       body.append('subject', `[Portfolio] ${payload.type} - ${payload.name}`);
@@ -108,7 +128,6 @@ export class ContactComponent {
 
   private finish(status: Status): void {
     this.status.set(status);
-    // Message révélé par un volet (sans fondu), puis focus pour les lecteurs d'écran.
     afterNextRender(
       async () => {
         const el = this.result()?.nativeElement;

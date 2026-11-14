@@ -4,62 +4,118 @@ import {
   DestroyRef,
   ElementRef,
   afterNextRender,
+  computed,
   inject,
+  signal,
 } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 import { ContentService } from '../core/content.service';
-import { MEDIA, loadMotion, refreshScrollSoon } from '../core/motion';
-import { RevealDirective } from '../shared/reveal.directive';
-import { SectionHeaderComponent } from '../shared/section-header.component';
+import { loadMotion, refreshScrollSoon } from '../core/motion';
+import { TechIconComponent } from '../shared/tech-icon.component';
+import { SystemService } from '../system/system.service';
 
-/** Études de cas : défilement horizontal épinglé sur desktop, pile verticale sur mobile. */
+const WORK_CLUSTERS: Record<string, string[]> = {
+  'plateformes-paiement-upay': ['web', 'mobile', 'gateway', 'transfer', 'payment', 'bank', 'momo'],
+  'migration-soap-rest': ['gateway', 'transfer', 'topup', 'bank', 'ci', 'registry'],
+  'imports-fichiers-volumineux': ['web', 'gateway', 'import', 'bus', 'postgres', 'registry', 'qa'],
+  'transfert-marque-blanche': ['web', 'gateway', 'import', 'payment', 'momo'],
+};
+
+/** 02 · Projets : une étude de cas active à la fois, couplée aux modules 3D correspondants. */
 @Component({
   selector: 'app-work',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [RouterLink, SectionHeaderComponent, RevealDirective],
+  imports: [RouterLink, TechIconComponent],
   styleUrl: './work.component.css',
   template: `
-    <section id="work" class="section section--surface work" aria-labelledby="work-title">
+    <section id="work" class="chapter-section section--surface" aria-labelledby="work-title">
       <div class="container">
-        <app-section-header
-          index="03"
-          headingId="work-title"
-          [eyebrow]="t().sections.work"
-          [title]="t().headings.work"
-        />
-      </div>
-      <div class="viewport">
-        <ul class="track" appReveal="stagger">
-          @for (cs of caseStudies(); track cs.slug) {
-            <li class="card">
-              <a class="card__link" [routerLink]="content.caseStudyPath(cs.slug)">
-                <div class="card__top">
-                  <span class="card__number">{{ cs.number }}</span>
-                  <span class="mono muted">{{ cs.sector }} · {{ cs.period }}</span>
-                </div>
-                <h3 class="h3 card__title">{{ cs.title }}</h3>
-                <p class="mono card__client">{{ cs.client }}</p>
-                <p class="muted card__summary">{{ cs.summary }}</p>
-                <ul class="tag-list">
-                  @for (tag of cs.stack.slice(0, 5); track tag) {
-                    <li class="tag">{{ tag }}</li>
-                  }
-                </ul>
-                <span class="card__cta">{{ t().work.read }} <span class="btn__arrow" aria-hidden="true">→</span></span>
+        <div class="chapter-sticky">
+          <div class="chapter-card">
+            <p id="work-title" class="mono chapter-eyebrow">
+              <span>02 - {{ t().sections.work }}</span>
+              <span>0{{ activeIndex() + 1 }} / 0{{ caseStudies().length }}</span>
+            </p>
+
+            <div class="step-tabs" role="tablist" [attr.aria-label]="t().sections.work">
+              @for (cs of caseStudies(); track cs.slug; let i = $index) {
+                <button
+                  type="button"
+                  role="tab"
+                  class="step-tab"
+                  [attr.aria-selected]="activeIndex() === i"
+                  (click)="selectIndex(i)"
+                >
+                  {{ cs.number }}
+                </button>
+              }
+            </div>
+
+            @if (current(); as cs) {
+              <p class="mono muted work__meta">{{ cs.client }} · {{ cs.sector }} · {{ cs.period }}</p>
+              <h2 class="chapter-title">{{ cs.title }}</h2>
+              <p class="chapter-summary">{{ cs.summary }}</p>
+
+              <ul class="tag-list">
+                @for (tag of cs.stack.slice(0, 4); track tag) {
+                  <li>
+                    <button
+                      type="button"
+                      class="tag tag--interactive"
+                      [class.is-highlighted]="system.isTechSelected(tag)"
+                      [attr.aria-pressed]="system.isTechSelected(tag)"
+                      (click)="system.selectTech(tag)"
+                    >
+                      <app-tech-icon [name]="tag" [size]="14" />
+                      <span>{{ tag }}</span>
+                    </button>
+                  </li>
+                }
+              </ul>
+
+              <p class="mono chapter-sync">
+                <span>{{ t().expertise.inScene }} :</span>
+                <strong>{{ nodesLabel(cs.slug) }}</strong>
+              </p>
+
+              <a class="link work__cta" [routerLink]="content.caseStudyPath(cs.slug)">
+                {{ t().work.read }} <span aria-hidden="true">→</span>
               </a>
-            </li>
-          }
-        </ul>
+            }
+          </div>
+        </div>
       </div>
     </section>
   `,
 })
 export class WorkComponent {
   protected readonly content = inject(ContentService);
+  protected readonly system = inject(SystemService);
   private readonly host = inject<ElementRef<HTMLElement>>(ElementRef).nativeElement;
+
   protected readonly t = this.content.t;
   protected readonly caseStudies = this.content.caseStudies;
+  protected readonly activeIndex = signal(0);
+  protected readonly current = computed(() => this.caseStudies()[this.activeIndex()] ?? this.caseStudies()[0]);
+  private userLocked = false;
+
+  protected nodesLabel(slug: string): string {
+    return this.system.nodeLabelsFor(WORK_CLUSTERS[slug] ?? []).join(' · ');
+  }
+
+  protected selectIndex(index: number): void {
+    this.userLocked = true;
+    this.activate(index);
+  }
+
+  private activate(index: number): void {
+    const cs = this.caseStudies()[index];
+    if (!cs) return;
+    this.activeIndex.set(index);
+    const nodes = WORK_CLUSTERS[cs.slug] ?? null;
+    void this.system.focusCluster(nodes, cs.title, true);
+  }
 
   constructor() {
     const destroyRef = inject(DestroyRef);
@@ -67,28 +123,32 @@ export class WorkComponent {
     destroyRef.onDestroy(() => revert?.());
 
     afterNextRender(async () => {
-      const { gsap } = await loadMotion();
+      const { gsap, ScrollTrigger } = await loadMotion();
       const mm = gsap.matchMedia();
       revert = () => mm.revert();
-      mm.add(MEDIA.desktopMotion, () => {
-        const section = this.host.querySelector<HTMLElement>('.work')!;
-        const track = this.host.querySelector<HTMLElement>('.track')!;
-        const distance = () => Math.max(0, track.scrollWidth - document.documentElement.clientWidth);
-        if (distance() <= 0) return;
-        gsap.to(track, {
-          x: () => -distance(),
-          ease: 'none',
-          scrollTrigger: {
-            trigger: section,
-            start: 'top top',
-            end: () => `+=${distance()}`,
-            pin: true,
-            scrub: 0.8,
-            invalidateOnRefresh: true,
-            anticipatePin: 1,
+
+      mm.add('all', () => {
+        ScrollTrigger.create({
+          trigger: this.host,
+          start: 'top 55%',
+          end: 'bottom 45%',
+          onEnter: () => {
+            this.userLocked = false;
+            this.activate(this.activeIndex());
+          },
+          onEnterBack: () => {
+            this.userLocked = false;
+            this.activate(this.activeIndex());
+          },
+          onUpdate: (self) => {
+            if (this.userLocked || !self.isActive) return;
+            const total = this.caseStudies().length;
+            const idx = Math.min(total - 1, Math.max(0, Math.floor(self.progress * total)));
+            if (idx !== this.activeIndex()) this.activate(idx);
           },
         });
       });
+
       refreshScrollSoon();
     });
   }

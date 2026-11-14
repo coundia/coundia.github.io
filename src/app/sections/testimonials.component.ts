@@ -3,7 +3,7 @@ import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { ContentService } from '../core/content.service';
 import { RevealDirective } from '../shared/reveal.directive';
 
-/** Témoignages : la section n'apparaît que si testimonials.json contient des entrées. */
+/** Témoignages en cartes HUD opaques laissant respirer la scène 3D. */
 @Component({
   selector: 'app-testimonials',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -12,42 +12,49 @@ import { RevealDirective } from '../shared/reveal.directive';
     @if (items().length) {
       <section class="section" aria-labelledby="testimonials-title">
         <div class="container">
-          <h2 id="testimonials-title" class="mono muted heading">{{ t().sections.testimonials }}</h2>
-          <ul class="grid" appReveal="stagger">
-            @for (item of items(); track item.id) {
-              <li>
-                <figure class="quote">
-                  <blockquote class="h4">« {{ item.quote }} »</blockquote>
-                  <figcaption class="muted">
-                    @if (item.url) {
-                      <a class="link" [href]="item.url" target="_blank" rel="noopener">{{ item.name }}</a>
-                    } @else {
-                      <strong>{{ item.name }}</strong>
-                    }
-                    - {{ item.position }}, {{ item.company }}
-                  </figcaption>
-                </figure>
-              </li>
-            }
-          </ul>
+          <div class="testimonials__wrap">
+            <h2 id="testimonials-title" class="mono muted heading hud-card">{{ t().sections.testimonials }}</h2>
+            <ul class="grid" appReveal="stagger">
+              @for (item of items(); track item.id) {
+                <li>
+                  <figure class="quote hud-card">
+                    <blockquote class="h4">« {{ item.quote }} »</blockquote>
+                    <figcaption class="muted">
+                      @if (item.url) {
+                        <a class="link" [href]="item.url" target="_blank" rel="noopener">{{ item.name }}</a>
+                      } @else {
+                        <strong>{{ item.name }}</strong>
+                      }
+                      - {{ item.position }}, {{ item.company }}
+                    </figcaption>
+                  </figure>
+                </li>
+              }
+            </ul>
+          </div>
         </div>
       </section>
     }
   `,
   styles: `
+    .testimonials__wrap {
+      display: grid;
+      gap: var(--space-5);
+      max-width: 820px;
+    }
     .heading {
-      margin-bottom: var(--space-6);
+      justify-self: start;
+      padding: var(--space-3) var(--space-4);
     }
     .grid {
       display: grid;
-      gap: var(--space-6);
+      gap: var(--space-5);
     }
     .quote {
       margin: 0;
       display: grid;
       gap: var(--space-4);
-      padding-left: var(--space-5);
-      border-left: 2px solid var(--color-accent);
+      border-left: 4px solid var(--color-accent);
     }
     blockquote {
       margin: 0;

@@ -2,5 +2,5 @@
   { "id": "years", "value": 8, "suffix": "+", "label": "ans d'expérience en développement full stack" },
   { "id": "payment", "value": 4, "suffix": "", "label": "plateformes de paiement et de transfert d'argent" },
   { "id": "remote", "value": 3, "suffix": " ans", "label": "en remote pour un éditeur SaaS canadien" },
-  { "id": "oss", "value": 4, "suffix": "", "label": "projets open source d'outillage et d'architecture" }
+  { "id": "oss", "value": 5, "suffix": "", "label": "projets open source" }
 ]
