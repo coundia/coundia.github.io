@@ -1,0 +1,7 @@
+[
+  { "id": "frontend", "domain": "Frontend", "items": ["Angular", "TypeScript", "RxJS", "AngularJS", "ExtJS", "HTML / CSS"] },
+  { "id": "backend", "domain": "Backend", "items": ["Java", "Spring Boot", "REST", "SOAP", "PHP", "Symfony", "Laravel", "API Platform"] },
+  { "id": "architecture", "domain": "Architecture", "items": ["Microservices", "DDD", "Clean Architecture", "CQRS", "Event sourcing", "Multi-tenant", "RBAC"] },
+  { "id": "data", "domain": "Données & messagerie", "items": ["PostgreSQL", "RabbitMQ", "Axon Framework"] },
+  { "id": "devops", "domain": "DevOps & qualité", "items": ["Docker", "GitHub Actions", "GitLab CI", "Vagrant", "Selenium", "Revues de code", "Agile"] }
+]

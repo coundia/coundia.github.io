@@ -1,0 +1,554 @@
+/*
+ * Styles globaux - voir prd/design.md.
+ * Règles absolues : aucun dégradé, aucune transparence (vérifié par scripts/check-design-rules.mjs).
+ */
+@import '@fontsource-variable/inter/index.css';
+@import '@fontsource/jetbrains-mono/400.css';
+@import '@fontsource/jetbrains-mono/500.css';
+@import './tokens.css';
+
+:root {
+  --font-display: 'Clash Display', 'Inter Variable', system-ui, sans-serif;
+  --font-body: 'Inter Variable', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', monospace;
+
+  --fs-display-xl: clamp(3rem, 1.6rem + 7vw, 7.5rem);
+  --fs-display-l: clamp(2.5rem, 1.6rem + 4.2vw, 5rem);
+  --fs-display-m: clamp(2rem, 1.5rem + 2.4vw, 3.5rem);
+  --fs-h3: clamp(1.5rem, 1.3rem + 0.8vw, 2rem);
+  --fs-h4: clamp(1.25rem, 1.15rem + 0.4vw, 1.5rem);
+  --fs-body-l: clamp(1.125rem, 1.08rem + 0.2vw, 1.25rem);
+  --fs-body: clamp(1rem, 0.98rem + 0.1vw, 1.0625rem);
+  --fs-small: 0.875rem;
+  --fs-mono: clamp(0.8125rem, 0.8rem + 0.06vw, 0.875rem);
+
+  --page-gutter: 16px;
+  --container: 1360px;
+  --header-h: 64px;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --page-gutter: 32px;
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --page-gutter: 64px;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  scroll-padding-top: calc(var(--header-h) + var(--space-5));
+}
+
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: clip;
+}
+
+img,
+svg,
+canvas {
+  display: block;
+  max-width: 100%;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin: 0;
+  font-weight: 600;
+  text-wrap: balance;
+}
+
+p {
+  margin: 0;
+  text-wrap: pretty;
+}
+
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  color: inherit;
+}
+
+button {
+  font: inherit;
+}
+
+::selection {
+  background: var(--color-accent);
+  color: var(--color-on-accent);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-text);
+  outline-offset: 3px;
+}
+
+/* ---------- Typographie ---------- */
+
+.display-xl,
+.display-l,
+.display-m {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.display-xl {
+  font-size: var(--fs-display-xl);
+  line-height: 0.95;
+}
+
+.display-l {
+  font-size: var(--fs-display-l);
+  line-height: 1;
+}
+
+.display-m {
+  font-size: var(--fs-display-m);
+  line-height: 1.05;
+}
+
+.h3 {
+  font-size: var(--fs-h3);
+  line-height: 1.2;
+  font-weight: 600;
+}
+
+.h4 {
+  font-size: var(--fs-h4);
+  line-height: 1.3;
+  font-weight: 600;
+}
+
+.body-l {
+  font-size: var(--fs-body-l);
+  line-height: 1.6;
+}
+
+.muted {
+  color: var(--color-text-muted);
+}
+
+.mono {
+  font-family: var(--font-mono);
+  font-size: var(--fs-mono);
+  line-height: 1.5;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.prose {
+  max-width: 68ch;
+}
+
+/* ---------- Mise en page ---------- */
+
+.container {
+  width: 100%;
+  max-width: calc(var(--container) + 2 * var(--page-gutter));
+  margin-inline: auto;
+  padding-inline: var(--page-gutter);
+}
+
+.section {
+  padding-block: var(--space-9);
+  border-top: 1px solid var(--color-border);
+}
+
+@media (min-width: 1024px) {
+  .section {
+    padding-block: var(--space-10);
+  }
+}
+
+.section--surface {
+  background: var(--color-surface-1);
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: absolute;
+  top: var(--space-2);
+  left: var(--space-2);
+  z-index: 100;
+  padding: var(--space-3) var(--space-4);
+  background: var(--color-accent);
+  color: var(--color-on-accent);
+  font-weight: 600;
+  transform: translateY(-200%);
+}
+
+.skip-link:focus {
+  transform: none;
+}
+
+/* ---------- Boutons ---------- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  min-height: 48px;
+  padding: 0 var(--space-5);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-sm);
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-weight: 500;
+  font-size: 1rem;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    transform var(--duration-s) ease,
+    box-shadow var(--duration-s) ease,
+    background-color var(--duration-xs) ease,
+    border-color var(--duration-xs) ease;
+}
+
+.btn:hover {
+  border-color: var(--color-text);
+  box-shadow: var(--shadow-hard);
+  transform: translate(-4px, -4px);
+}
+
+.btn--primary {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  color: var(--color-on-accent);
+}
+
+.btn--primary:hover {
+  background: var(--color-accent-hover);
+  border-color: var(--color-accent-hover);
+  box-shadow: var(--shadow-hard-neutral);
+}
+
+.btn:disabled,
+.btn[aria-disabled='true'] {
+  background: var(--color-surface-2);
+  border-color: var(--color-border);
+  color: var(--color-text-disabled);
+  box-shadow: none;
+  transform: none;
+  cursor: not-allowed;
+}
+
+.btn__arrow {
+  transition: transform var(--duration-s) ease;
+}
+
+.btn:hover .btn__arrow {
+  transform: translateX(4px);
+}
+
+.link {
+  color: var(--color-accent);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+}
+
+.link:hover {
+  text-decoration-thickness: 2px;
+}
+
+/* ---------- Étiquettes ---------- */
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  padding: 0 var(--space-3);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-pill);
+  background: var(--color-bg);
+  color: var(--color-text-muted);
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+/* Scène 3D (créée dynamiquement, déplacée entre les conteneurs : hors encapsulation Angular). */
+.sys {
+  position: absolute;
+  inset: 0;
+}
+
+.sys__canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.sys__labels {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.sys__label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 2px 6px;
+  border: 1px solid var(--color-border);
+  border-radius: 2px;
+  background: var(--color-bg);
+  color: var(--color-text-muted);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  line-height: 1.4;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.sys__label.is-active {
+  border-color: var(--color-accent);
+  background: var(--color-accent);
+  color: var(--color-on-accent);
+}
+
+.sys.has-focus .sys__label:not(.is-active) {
+  visibility: hidden;
+}
+
+/* Sur mobile, le schéma est trop petit pour des étiquettes lisibles : la liste des composants
+   est affichée sous le schéma à la place. */
+@media (max-width: 767.98px) {
+  .sys__label {
+    visibility: hidden;
+  }
+}
+
+/* ---------- Fenêtre « architecture » (hero, expertise) ---------- */
+
+.window {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  margin: 0;
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-sm);
+  background: var(--color-bg);
+  overflow: hidden;
+}
+
+.window__bar {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  min-height: 40px;
+  padding: 0 var(--space-4);
+  border-bottom: 1px solid var(--color-border);
+  background: var(--color-surface-1);
+  color: var(--color-text-muted);
+  font-size: 0.75rem;
+}
+
+.window__dots {
+  display: inline-flex;
+  gap: 6px;
+}
+
+.window__dots i {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--color-border-strong);
+}
+
+.window__title {
+  text-transform: none;
+}
+
+.window__nodes {
+  min-height: 4.5em;
+  color: var(--color-accent);
+  font-size: 0.75rem;
+}
+
+.window__nodes.is-empty {
+  visibility: hidden;
+}
+
+@media (min-width: 1024px) {
+  .window__nodes {
+    min-height: 3em;
+  }
+}
+
+.window__nodes span {
+  color: var(--color-text-muted);
+}
+
+@media (max-width: 767.98px) {
+  .window__title {
+    display: none;
+  }
+}
+
+.window__status {
+  margin-left: auto;
+  text-align: right;
+}
+
+.window__status strong {
+  color: var(--color-accent);
+  font-weight: 500;
+}
+
+.window__body {
+  position: relative;
+  aspect-ratio: 4 / 3;
+}
+
+.window__foot {
+  display: grid;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  border-top: 1px solid var(--color-border);
+  background: var(--color-surface-1);
+}
+
+.window__hint {
+  color: var(--color-text-muted);
+  font-size: 0.75rem;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.chip {
+  min-height: 36px;
+  padding: 0 var(--space-3);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-pill);
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition:
+    background-color var(--duration-xs) ease,
+    border-color var(--duration-xs) ease;
+}
+
+.chip:hover {
+  border-color: var(--color-accent);
+}
+
+.chip[aria-pressed='true'] {
+  border-color: var(--color-accent);
+  background: var(--color-accent);
+  color: var(--color-on-accent);
+}
+
+/* ---------- Animations : masques pour les révélations ---------- */
+
+.line-mask {
+  display: block;
+  overflow: clip;
+  padding-bottom: 0.08em;
+  margin-bottom: -0.08em;
+}
+
+/* Le texte du hero est masqué (visibility, pas d'opacité) le temps que l'intro démarre.
+   Le script inline de index.html retire la classe au bout de 2,5 s quoi qu'il arrive. */
+html.motion-pending [data-intro] {
+  visibility: hidden;
+}
+
+/* ---------- Transitions de page (View Transitions API) : volet, sans fondu ---------- */
+
+::view-transition-old(root) {
+  animation: none;
+}
+
+::view-transition-new(root) {
+  animation: page-wipe 0.6s cubic-bezier(0.65, 0, 0.35, 1) both;
+}
+
+@keyframes page-wipe {
+  from {
+    clip-path: inset(100% 0 0 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-new(root) {
+    animation: none;
+  }
+
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0s !important;
+  }
+}
+
+/* ---------- Impression (CV) ---------- */
+
+@media print {
+  app-header,
+  app-footer,
+  .skip-link {
+    display: none;
+  }
+
+  body {
+    background: var(--color-surface-1);
+  }
+}

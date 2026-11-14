@@ -1,0 +1,34 @@
+[
+  {
+    "id": "spring-microservices-starter",
+    "name": "spring-microservices-starter",
+    "url": "https://github.com/coundia/spring-microservices-starter",
+    "description": "Projet Maven multi-modules Spring Boot construit selon le DDD et le CQRS, avec Axon Framework, RabbitMQ et PostgreSQL comme event store.",
+    "stack": ["Java", "Spring Boot", "Axon", "RabbitMQ", "PostgreSQL"],
+    "highlight": "DDD · CQRS · Event sourcing"
+  },
+  {
+    "id": "cnd-api-maker",
+    "name": "cnd-api-maker",
+    "url": "https://github.com/coundia/cnd-api-maker",
+    "description": "Monorepo d'un générateur d'API agnostique du framework : à partir de définitions, il génère ressources multi-tenant, RBAC, migrations et tests pour Laravel et Symfony.",
+    "stack": ["PHP", "Laravel", "Symfony", "API Platform"],
+    "highlight": "Génération de code · Multi-tenant · RBAC"
+  },
+  {
+    "id": "ddd-maker-bundle",
+    "name": "ddd-maker-bundle",
+    "url": "https://github.com/coundia/ddd-maker-bundle",
+    "description": "Bundle Symfony qui automatise la génération d'une structure Domain-Driven Design.",
+    "stack": ["PHP", "Symfony"],
+    "highlight": "DDD · Outillage"
+  },
+  {
+    "id": "selenium-java",
+    "name": "selenium-java-pcoundia",
+    "url": "https://github.com/coundia/selenium-java-pcoundia",
+    "description": "Tests de bout en bout automatisés en Java avec Selenium.",
+    "stack": ["Java", "Selenium"],
+    "highlight": "Tests de bout en bout"
+  }
+]

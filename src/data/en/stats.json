@@ -1,0 +1,6 @@
+[
+  { "id": "years", "value": 8, "suffix": "+", "label": "years of full stack development" },
+  { "id": "payment", "value": 4, "suffix": "", "label": "payment and money transfer platforms" },
+  { "id": "remote", "value": 3, "suffix": " yrs", "label": "remote for a Canadian SaaS vendor" },
+  { "id": "oss", "value": 4, "suffix": "", "label": "open source tooling and architecture projects" }
+]

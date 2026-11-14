@@ -1,0 +1,77 @@
+@if (study(); as cs) {
+  <article class="study">
+    <header class="container head">
+      <a class="mono back" [routerLink]="content.homePath()" fragment="work">← {{ t().work.back }}</a>
+      <p class="mono sector">{{ cs.number }} · {{ cs.sector }}</p>
+      <h1 class="display-m title" appReveal="lines" [revealOnLoad]="true">{{ cs.title }}</h1>
+      <p class="body-l muted summary">{{ cs.summary }}</p>
+
+      <dl class="meta" appReveal="wipe" [revealOnLoad]="true" [revealDelay]="0.3">
+        <div>
+          <dt class="mono muted">{{ t().work.client }}</dt>
+          <dd>{{ cs.client }}</dd>
+        </div>
+        <div>
+          <dt class="mono muted">{{ t().work.role }}</dt>
+          <dd>{{ cs.role }}</dd>
+        </div>
+        <div>
+          <dt class="mono muted">{{ t().work.period }}</dt>
+          <dd>{{ cs.period }}</dd>
+        </div>
+      </dl>
+    </header>
+
+    <div class="container body">
+      <section class="block" appReveal="rise">
+        <h2 class="mono label">01 - {{ t().work.context }}</h2>
+        <p class="body-l prose">{{ cs.context }}</p>
+      </section>
+
+      <section class="block" appReveal="rise">
+        <h2 class="mono label">02 - {{ t().work.challenge }}</h2>
+        <p class="body-l prose">{{ cs.challenge }}</p>
+      </section>
+
+      <section class="block">
+        <h2 class="mono label">03 - {{ t().work.approach }}</h2>
+        <ol class="approach" appReveal="stagger">
+          @for (step of cs.approach; track step.title; let i = $index) {
+            <li class="approach__item">
+              <span class="approach__index mono">{{ i + 1 }}</span>
+              <h3 class="h4">{{ step.title }}</h3>
+              <p class="muted">{{ step.detail }}</p>
+            </li>
+          }
+        </ol>
+      </section>
+
+      <section class="block" appReveal="rise">
+        <h2 class="mono label">04 - {{ t().work.outcomes }}</h2>
+        <ul class="outcomes">
+          @for (outcome of cs.outcomes; track outcome) {
+            <li class="h4">{{ outcome }}</li>
+          }
+        </ul>
+      </section>
+
+      <section class="block" appReveal="rise">
+        <h2 class="mono label">05 - {{ t().work.stack }}</h2>
+        <ul class="tag-list">
+          @for (tag of cs.stack; track tag) {
+            <li class="tag">{{ tag }}</li>
+          }
+        </ul>
+      </section>
+    </div>
+
+    @if (next(); as n) {
+      <nav class="next" [attr.aria-label]="t().work.next">
+        <a class="container next__link" [routerLink]="content.caseStudyPath(n.slug)">
+          <span class="mono">{{ t().work.next }} →</span>
+          <span class="display-m">{{ n.title }}</span>
+        </a>
+      </nav>
+    }
+  </article>
+}

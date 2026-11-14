@@ -1,0 +1,62 @@
+{
+  "firstName": "Papa",
+  "lastName": "Coundia",
+  "title": "Développeur Full Stack Senior",
+  "headline": "Angular & Spring Boot",
+  "roles": [
+    {
+      "label": "Angular",
+      "layer": "frontend"
+    },
+    {
+      "label": "Spring Boot",
+      "layer": "backend"
+    },
+    {
+      "label": "Microservices",
+      "layer": "backend"
+    },
+    {
+      "label": "FinTech",
+      "layer": "payment"
+    },
+    {
+      "label": "CI/CD",
+      "layer": "quality"
+    },
+    {
+      "label": "SaaS multi-tenant",
+      "layer": null
+    }
+  ],
+  "tagline": "Je conçois et je fais évoluer des plateformes critiques - paiement, transfert d'argent, SaaS multi-tenant - du front Angular aux microservices Spring.",
+  "location": "Thiès, Sénégal",
+  "timezone": "GMT (UTC+0) - compatible Europe et Amérique du Nord",
+  "careerStart": "2018-03",
+  "availability": {
+    "status": "available",
+    "label": "Ouvert aux missions et aux postes en remote"
+  },
+  "email": "",
+  "links": [
+    {
+      "label": "GitHub",
+      "url": "https://github.com/coundia"
+    },
+    {
+      "label": "Présentations",
+      "url": "https://github.com/coundia/coundia.github.io"
+    }
+  ],
+  "about": [
+    "Développeur full stack depuis 2018, je travaille sur des systèmes où l'erreur coûte cher : transferts d'argent, recharges, encaissements, plateformes SaaS utilisées par plusieurs organisations à la fois.",
+    "J'ai fait évoluer des plateformes de paiement chez ATPS SA à Dakar, puis une plateforme SaaS multi-tenant de suivi-évaluation pour DevAlto (Québec), en remote pendant près de trois ans. Je suis aujourd'hui consultant IT.",
+    "Côté architecture, je m'appuie sur le DDD, la Clean Architecture et, quand le métier le justifie, le CQRS et l'event sourcing - que je publie aussi en open source."
+  ],
+  "summaryStrip": [
+    "8+ ans",
+    "FinTech",
+    "SaaS",
+    "Remote Canada ↔ Sénégal"
+  ]
+}

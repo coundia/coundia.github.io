@@ -1,0 +1,85 @@
+<div class="container toolbar no-print">
+  <a class="mono back" [routerLink]="content.homePath()">← {{ t().cv.back }}</a>
+  <button type="button" class="btn btn--primary" (click)="print()">{{ t().cv.print }}</button>
+</div>
+
+<article class="cv">
+  <header class="cv__head">
+    <div>
+      <h1 class="cv__name">{{ profile().firstName }} {{ profile().lastName }}</h1>
+      <p class="cv__title">{{ profile().title }} - {{ profile().headline }}</p>
+    </div>
+    <ul class="cv__contact">
+      <li>{{ profile().location }}</li>
+      @if (profile().email) {
+        <li>{{ profile().email }}</li>
+      }
+      @for (link of profile().links; track link.url) {
+        <li>{{ link.url.replace('https://', '') }}</li>
+      }
+    </ul>
+  </header>
+
+  <section class="cv__section">
+    <p class="cv__lead">{{ profile().tagline }}</p>
+  </section>
+
+  <section class="cv__section">
+    <h2 class="cv__h2">{{ t().cv.experience }}</h2>
+    @for (exp of content.experiences(); track exp.id) {
+      <div class="cv__item">
+        <div class="cv__item-head">
+          <h3 class="cv__h3">
+            {{ exp.role }}@if (exp.company) {<span> - {{ exp.company }}</span>}
+          </h3>
+          <p class="cv__date">{{ content.formatMonth(exp.start) }} → {{ content.formatMonth(exp.end) }}</p>
+        </div>
+        <p class="cv__where">{{ exp.location }}@if (exp.remote) {<span> · {{ t().journey.remote }}</span>}</p>
+        @if (exp.highlights.length) {
+          <ul class="cv__list">
+            @for (h of exp.highlights; track h) {
+              <li>{{ h }}</li>
+            }
+          </ul>
+        }
+        @if (exp.stack.length) {
+          <p class="cv__stack">{{ exp.stack.join(' · ') }}</p>
+        }
+      </div>
+    }
+  </section>
+
+  <section class="cv__section">
+    <h2 class="cv__h2">{{ t().cv.education }}</h2>
+    @for (edu of content.education(); track edu.id) {
+      <div class="cv__item">
+        <div class="cv__item-head">
+          <h3 class="cv__h3">{{ edu.degree }} - {{ edu.school }}</h3>
+          <p class="cv__date">{{ content.formatMonth(edu.start) }} → {{ content.formatMonth(edu.end) }}</p>
+        </div>
+        <p class="cv__where">{{ edu.location }}</p>
+      </div>
+    }
+  </section>
+
+  <section class="cv__section">
+    <h2 class="cv__h2">{{ t().cv.skills }}</h2>
+    <dl class="cv__skills">
+      @for (group of content.skills(); track group.id) {
+        <div>
+          <dt>{{ group.domain }}</dt>
+          <dd>{{ group.items.join(' · ') }}</dd>
+        </div>
+      }
+    </dl>
+  </section>
+
+  <section class="cv__section">
+    <h2 class="cv__h2">{{ t().cv.openSource }}</h2>
+    <ul class="cv__list">
+      @for (repo of content.openSource(); track repo.id) {
+        <li><strong>{{ repo.name }}</strong> - {{ repo.description }}</li>
+      }
+    </ul>
+  </section>
+</article>

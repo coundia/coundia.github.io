@@ -1,0 +1,91 @@
+/* Fichier généré par scripts/build-tokens.mjs - ne pas modifier à la main. */
+:root {
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --space-9: 96px;
+  --space-10: 128px;
+  --space-11: 192px;
+  --radius-0: 0px;
+  --radius-sm: 4px;
+  --radius-pill: 999px;
+  --shadow-hard: 4px 4px 0 var(--color-accent);
+  --shadow-hard-neutral: 4px 4px 0 var(--color-border-strong);
+  --duration-xs: 0.15s;
+  --duration-s: 0.3s;
+  --duration-m: 0.6s;
+  --duration-l: 1s;
+  --duration-xl: 1.6s;
+}
+
+:root,
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --color-bg: #0B0D12;
+  --color-surface-1: #12151C;
+  --color-surface-2: #1A1E27;
+  --color-border: #272C37;
+  --color-border-strong: #5D6676;
+  --color-text: #F4F6FA;
+  --color-text-muted: #A7AFBD;
+  --color-text-subtle: #808999;
+  --color-text-disabled: #4A5160;
+  --color-accent: #3B82F6;
+  --color-accent-hover: #60A5FA;
+  --color-on-accent: #0B0D12;
+  --color-secondary: #93C5FD;
+  --color-success: #4ADE80;
+  --color-error: #F87171;
+  --color-warning: #FBBF24;
+  --scene-grid: #171B23;
+  --scene-node-top: #2B313D;
+  --scene-node-left: #1C2029;
+  --scene-node-right: #141820;
+  --scene-node-edge: #5D6676;
+  --scene-screen: #3B82F6;
+  --scene-active-top: #60A5FA;
+  --scene-active-left: #3B82F6;
+  --scene-active-right: #1D4ED8;
+  --scene-active-edge: #BFDBFE;
+  --scene-link: #3A414E;
+  --scene-link-active: #3B82F6;
+  --scene-packet: #F4F6FA;
+}
+
+:root[data-theme='light'] {
+  color-scheme: light;
+  --color-bg: #F6F8FB;
+  --color-surface-1: #FFFFFF;
+  --color-surface-2: #EBEFF5;
+  --color-border: #D9DFE8;
+  --color-border-strong: #7C8596;
+  --color-text: #0B0D12;
+  --color-text-muted: #4A5363;
+  --color-text-subtle: #6B7385;
+  --color-text-disabled: #A3ABB8;
+  --color-accent: #1D4ED8;
+  --color-accent-hover: #1E40AF;
+  --color-on-accent: #FFFFFF;
+  --color-secondary: #1E3A8A;
+  --color-success: #15803D;
+  --color-error: #B91C1C;
+  --color-warning: #92400E;
+  --scene-grid: #E3E8EF;
+  --scene-node-top: #FFFFFF;
+  --scene-node-left: #E6EAF1;
+  --scene-node-right: #CBD2DD;
+  --scene-node-edge: #7C8596;
+  --scene-screen: #1D4ED8;
+  --scene-active-top: #93C5FD;
+  --scene-active-left: #3B82F6;
+  --scene-active-right: #1D4ED8;
+  --scene-active-edge: #1E3A8A;
+  --scene-link: #B8C0CC;
+  --scene-link-active: #1D4ED8;
+  --scene-packet: #0B0D12;
+}

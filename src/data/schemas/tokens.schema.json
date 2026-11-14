@@ -1,0 +1,41 @@
+{
+  "type": "object",
+  "required": [
+    "color",
+    "scene",
+    "space",
+    "radius",
+    "shadow",
+    "motion"
+  ],
+  "properties": {
+    "color": {
+      "type": "object",
+      "required": [
+        "dark",
+        "light"
+      ],
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "string",
+          "pattern": "^#[0-9A-Fa-f]{6}$"
+        }
+      }
+    },
+    "scene": {
+      "type": "object",
+      "required": [
+        "dark",
+        "light"
+      ],
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "string",
+          "pattern": "^#[0-9A-Fa-f]{6}$"
+        }
+      }
+    }
+  }
+}

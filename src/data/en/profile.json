@@ -1,0 +1,62 @@
+{
+  "firstName": "Papa",
+  "lastName": "Coundia",
+  "title": "Senior Full Stack Developer",
+  "headline": "Angular & Spring Boot",
+  "roles": [
+    {
+      "label": "Angular",
+      "layer": "frontend"
+    },
+    {
+      "label": "Spring Boot",
+      "layer": "backend"
+    },
+    {
+      "label": "Microservices",
+      "layer": "backend"
+    },
+    {
+      "label": "FinTech",
+      "layer": "payment"
+    },
+    {
+      "label": "CI/CD",
+      "layer": "quality"
+    },
+    {
+      "label": "Multi-tenant SaaS",
+      "layer": null
+    }
+  ],
+  "tagline": "I design and evolve critical platforms - payments, money transfer, multi-tenant SaaS - from Angular front ends to Spring microservices.",
+  "location": "Thiès, Senegal",
+  "timezone": "GMT (UTC+0) - overlaps with Europe and North America",
+  "careerStart": "2018-03",
+  "availability": {
+    "status": "available",
+    "label": "Open to contracts and remote roles"
+  },
+  "email": "",
+  "links": [
+    {
+      "label": "GitHub",
+      "url": "https://github.com/coundia"
+    },
+    {
+      "label": "Talks",
+      "url": "https://github.com/coundia/coundia.github.io"
+    }
+  ],
+  "about": [
+    "A full stack developer since 2018, I work on systems where mistakes are expensive: money transfers, top-ups, payments, SaaS platforms shared by many organisations at once.",
+    "I evolved payment platforms at ATPS SA in Dakar, then a multi-tenant monitoring & evaluation SaaS platform for DevAlto (Quebec City), fully remote for nearly three years. I now work as an IT consultant.",
+    "On the architecture side, I rely on DDD, Clean Architecture and - when the domain calls for it - CQRS and event sourcing, which I also publish as open source."
+  ],
+  "summaryStrip": [
+    "8+ years",
+    "FinTech",
+    "SaaS",
+    "Remote Canada ↔ Senegal"
+  ]
+}

@@ -1,0 +1,88 @@
+[
+  {
+    "id": "consultant",
+    "role": "IT Consultant",
+    "company": "",
+    "location": "Senegal",
+    "remote": false,
+    "start": "2025-03",
+    "end": null,
+    "highlights": [],
+    "stack": [],
+    "sector": "Consulting",
+    "caseStudySlug": null
+  },
+  {
+    "id": "devalto",
+    "role": "Full Stack Developer",
+    "company": "DevAlto",
+    "location": "Quebec City, Canada",
+    "remote": true,
+    "start": "2022-06",
+    "end": "2025-03",
+    "highlights": [
+      "Evolved a multi-tenant SaaS platform for project monitoring and evaluation",
+      "Optimised imports of large files",
+      "Took part in code reviews and QA"
+    ],
+    "stack": [
+      "Angular",
+      "Microservices",
+      "REST",
+      "Docker",
+      "PHP",
+      "GitHub Actions",
+      "Selenium",
+      "ExtJS",
+      "DDD",
+      "Clean Architecture"
+    ],
+    "sector": "SaaS - monitoring & evaluation",
+    "caseStudySlug": "imports-fichiers-volumineux"
+  },
+  {
+    "id": "atps",
+    "role": "Integration Engineer",
+    "company": "ATPS SA",
+    "location": "Dakar, Senegal",
+    "remote": false,
+    "start": "2019-05",
+    "end": "2022-06",
+    "highlights": [
+      "Migrated SOAP web services to REST for money transfer, top-up and payment offerings",
+      "Designed, built and integrated the Upay App, Upay Business and Proximo payment platforms with financial partners",
+      "Evolved existing platforms"
+    ],
+    "stack": [
+      "Angular",
+      "Spring Boot",
+      "REST",
+      "SOAP",
+      "GitLab CI",
+      "Docker",
+      "PHP"
+    ],
+    "sector": "FinTech",
+    "caseStudySlug": "plateformes-paiement-upay"
+  },
+  {
+    "id": "money-express",
+    "role": "Web Developer",
+    "company": "Money Express (Chaka Group)",
+    "location": "Senegal",
+    "remote": false,
+    "start": "2018-03",
+    "end": "2019-05",
+    "highlights": [
+      "Designed and built a white-label money transfer platform",
+      "Evolved existing platforms",
+      "Worked closely with business teams to frame requirements"
+    ],
+    "stack": [
+      "PHP",
+      "AngularJS"
+    ],
+    "sector": "FinTech",
+    "caseStudySlug": "transfert-marque-blanche"
+  }
+]

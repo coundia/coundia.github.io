@@ -1,0 +1,154 @@
+[
+  {
+    "slug": "plateformes-paiement-upay",
+    "number": "01",
+    "title": "Upay & Proximo payment platforms",
+    "client": "ATPS SA",
+    "sector": "FinTech",
+    "period": "2019 - 2022",
+    "role": "Integration Engineer - design, development, integration",
+    "summary": "Designed, built and integrated Upay App, Upay Business and Proximo with financial partners: money transfer, top-up and payments.",
+    "context": "ATPS SA, based in Dakar, runs money transfer, top-up and payment services. These services depend on exchanges with several financial partners, each with its own interfaces.",
+    "challenge": "Ship new payment platforms for consumers (Upay App), businesses (Upay Business) and the local agent network (Proximo), while evolving the platforms already in production without interrupting financial flows.",
+    "approach": [
+      {
+        "title": "Partner integration",
+        "detail": "Designed and built the integrations with financial partners for money transfer, top-up and payment offerings."
+      },
+      {
+        "title": "Angular front end, Spring Boot back end",
+        "detail": "Angular interfaces and Spring Boot services exposed over REST, alongside the existing SOAP services."
+      },
+      {
+        "title": "Continuous delivery",
+        "detail": "GitLab CI pipelines and Docker containers to ship changes to production platforms repeatably."
+      }
+    ],
+    "outcomes": [
+      "Three payment platforms shipped: Upay App, Upay Business and Proximo",
+      "Money transfer, top-up and payment offerings integrated with financial partners",
+      "Existing platforms maintained and extended for three years"
+    ],
+    "stack": [
+      "Angular",
+      "Spring Boot",
+      "REST",
+      "SOAP",
+      "GitLab CI",
+      "Docker",
+      "PHP"
+    ]
+  },
+  {
+    "slug": "migration-soap-rest",
+    "number": "02",
+    "title": "Migrating SOAP web services to REST",
+    "client": "ATPS SA",
+    "sector": "FinTech",
+    "period": "2019 - 2022",
+    "role": "Integration Engineer",
+    "summary": "Migrated SOAP web services to REST APIs for money transfer, top-up and payment offerings.",
+    "context": "Money transfer, top-up and payment offerings relied on SOAP web services, which were heavier to evolve and to consume from web and mobile applications.",
+    "challenge": "Modernise the interfaces of services used in production by financial offerings, without breaking existing consumers.",
+    "approach": [
+      {
+        "title": "REST contracts",
+        "detail": "Redefined the money transfer, top-up and payment services as REST APIs."
+      },
+      {
+        "title": "Coexistence",
+        "detail": "Progressive migration: SOAP and REST services coexist while consumers switch over."
+      },
+      {
+        "title": "Continuous integration",
+        "detail": "Automated builds and deployments with GitLab CI and Docker."
+      }
+    ],
+    "outcomes": [
+      "Money transfer, top-up and payment offerings exposed over REST",
+      "API foundation reused by the new Upay and Proximo platforms"
+    ],
+    "stack": [
+      "Spring Boot",
+      "REST",
+      "SOAP",
+      "GitLab CI",
+      "Docker"
+    ]
+  },
+  {
+    "slug": "imports-fichiers-volumineux",
+    "number": "03",
+    "title": "Large file imports on a multi-tenant SaaS",
+    "client": "DevAlto",
+    "sector": "SaaS - monitoring & evaluation",
+    "period": "2022 - 2025",
+    "role": "Full Stack Developer, remote from Senegal",
+    "summary": "Optimised large file imports on a multi-tenant SaaS platform for project monitoring and evaluation, built in Quebec City.",
+    "context": "DevAlto builds a multi-tenant SaaS platform for project monitoring and evaluation (M&E). Each client organisation imports its data, sometimes as very large files.",
+    "challenge": "Make large file imports reliable and fast on a platform shared by many organisations, within a microservices architecture.",
+    "approach": [
+      {
+        "title": "Import optimisation",
+        "detail": "Reviewed and optimised the import pipeline for large files."
+      },
+      {
+        "title": "Architecture",
+        "detail": "Worked within a microservices architecture designed with DDD and Clean Architecture."
+      },
+      {
+        "title": "Quality",
+        "detail": "Code reviews, QA and end-to-end tests with Selenium, continuous integration with GitHub Actions."
+      }
+    ],
+    "outcomes": [
+      "Large file imports optimised on the production platform",
+      "Nearly three years of remote collaboration with a Quebec-based team"
+    ],
+    "stack": [
+      "Angular",
+      "Microservices",
+      "REST",
+      "PHP",
+      "Docker",
+      "GitHub Actions",
+      "Selenium",
+      "DDD",
+      "Clean Architecture"
+    ]
+  },
+  {
+    "slug": "transfert-marque-blanche",
+    "number": "04",
+    "title": "White-label money transfer platform",
+    "client": "Money Express (Chaka Group)",
+    "sector": "FinTech",
+    "period": "2018 - 2019",
+    "role": "Web Developer",
+    "summary": "Designed and built a white-label money transfer platform, working closely with business teams.",
+    "context": "Money Express, part of the Chaka Group, provides money transfer services. A white-label platform lets partners offer the service under their own brand.",
+    "challenge": "Design a single platform, customisable per brand, from business requirements that still had to be framed.",
+    "approach": [
+      {
+        "title": "Framing with the business",
+        "detail": "Worked closely with business teams to frame the requirements."
+      },
+      {
+        "title": "Design and development",
+        "detail": "Platform built in PHP with an AngularJS front end."
+      },
+      {
+        "title": "Evolution",
+        "detail": "Evolved the existing platforms in parallel."
+      }
+    ],
+    "outcomes": [
+      "White-label money transfer platform designed and built",
+      "First FinTech experience, the foundation for the payment projects that followed"
+    ],
+    "stack": [
+      "PHP",
+      "AngularJS"
+    ]
+  }
+]

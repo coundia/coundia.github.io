@@ -1,0 +1,154 @@
+[
+  {
+    "slug": "plateformes-paiement-upay",
+    "number": "01",
+    "title": "Plateformes de paiement Upay & Proximo",
+    "client": "ATPS SA",
+    "sector": "FinTech",
+    "period": "2019 - 2022",
+    "role": "Ingénieur Intégration - conception, développement, intégration",
+    "summary": "Conception, développement et intégration d'Upay App, Upay Business et Proximo avec les partenaires financiers : transfert, recharge et encaissement.",
+    "context": "ATPS SA, à Dakar, opère des services de transfert d'argent, de recharge et d'encaissement. Ces services reposent sur des échanges avec plusieurs partenaires financiers, chacun avec ses propres interfaces.",
+    "challenge": "Livrer de nouvelles plateformes de paiement destinées aux particuliers (Upay App), aux entreprises (Upay Business) et au réseau de proximité (Proximo), tout en faisant évoluer les plateformes déjà en production, sans interrompre les flux financiers.",
+    "approach": [
+      {
+        "title": "Intégration des partenaires",
+        "detail": "Conception et développement des intégrations avec les partenaires financiers pour les offres de transfert, de recharge et d'encaissement."
+      },
+      {
+        "title": "Front Angular, back Spring Boot",
+        "detail": "Interfaces Angular et services Spring Boot exposés en REST, en cohabitation avec les services SOAP existants."
+      },
+      {
+        "title": "Livraison continue",
+        "detail": "Pipelines GitLab CI et conteneurs Docker pour livrer les évolutions des plateformes en production de façon répétable."
+      }
+    ],
+    "outcomes": [
+      "Trois plateformes de paiement livrées : Upay App, Upay Business et Proximo",
+      "Offres de transfert, recharge et encaissement intégrées avec les partenaires financiers",
+      "Plateformes existantes maintenues et enrichies pendant trois ans"
+    ],
+    "stack": [
+      "Angular",
+      "Spring Boot",
+      "REST",
+      "SOAP",
+      "GitLab CI",
+      "Docker",
+      "PHP"
+    ]
+  },
+  {
+    "slug": "migration-soap-rest",
+    "number": "02",
+    "title": "Migration des web services SOAP vers REST",
+    "client": "ATPS SA",
+    "sector": "FinTech",
+    "period": "2019 - 2022",
+    "role": "Ingénieur Intégration",
+    "summary": "Migration des web services SOAP vers des API REST pour les offres de transfert, de recharge et d'encaissement.",
+    "context": "Les offres de transfert, de recharge et d'encaissement s'appuyaient sur des web services SOAP, plus lourds à faire évoluer et à consommer depuis les applications web et mobiles.",
+    "challenge": "Moderniser les interfaces de services utilisés en production par des offres financières, sans casser les consommateurs existants.",
+    "approach": [
+      {
+        "title": "Contrats REST",
+        "detail": "Redéfinition des services de transfert, de recharge et d'encaissement sous forme d'API REST."
+      },
+      {
+        "title": "Cohabitation",
+        "detail": "Migration progressive : les services SOAP et REST cohabitent le temps que les consommateurs basculent."
+      },
+      {
+        "title": "Intégration continue",
+        "detail": "Automatisation des builds et des déploiements avec GitLab CI et Docker."
+      }
+    ],
+    "outcomes": [
+      "Offres de transfert, recharge et encaissement exposées en REST",
+      "Socle d'API réutilisé par les nouvelles plateformes Upay et Proximo"
+    ],
+    "stack": [
+      "Spring Boot",
+      "REST",
+      "SOAP",
+      "GitLab CI",
+      "Docker"
+    ]
+  },
+  {
+    "slug": "imports-fichiers-volumineux",
+    "number": "03",
+    "title": "Imports de fichiers volumineux sur un SaaS multi-tenant",
+    "client": "DevAlto",
+    "sector": "SaaS - suivi-évaluation",
+    "period": "2022 - 2025",
+    "role": "Développeur Full Stack, en remote depuis le Sénégal",
+    "summary": "Optimisation des imports de fichiers volumineux sur une plateforme SaaS multi-tenant de suivi et d'évaluation de projets, éditée au Québec.",
+    "context": "DevAlto édite une plateforme SaaS multi-tenant de suivi et d'évaluation (M&E) de projets. Chaque organisation cliente y importe ses données, parfois sous forme de fichiers très volumineux.",
+    "challenge": "Rendre les imports de gros fichiers fiables et rapides, sur une plateforme partagée par plusieurs organisations, dans une architecture microservices.",
+    "approach": [
+      {
+        "title": "Optimisation des imports",
+        "detail": "Revue et optimisation de la chaîne d'import des fichiers volumineux."
+      },
+      {
+        "title": "Architecture",
+        "detail": "Travail dans une architecture microservices conçue avec le DDD et la Clean Architecture."
+      },
+      {
+        "title": "Qualité",
+        "detail": "Revues de code, QA et tests de bout en bout avec Selenium, intégration continue avec GitHub Actions."
+      }
+    ],
+    "outcomes": [
+      "Imports de fichiers volumineux optimisés sur la plateforme en production",
+      "Près de trois ans de collaboration en remote avec une équipe basée au Québec"
+    ],
+    "stack": [
+      "Angular",
+      "Microservices",
+      "REST",
+      "PHP",
+      "Docker",
+      "GitHub Actions",
+      "Selenium",
+      "DDD",
+      "Clean Architecture"
+    ]
+  },
+  {
+    "slug": "transfert-marque-blanche",
+    "number": "04",
+    "title": "Plateforme de transfert d'argent en marque blanche",
+    "client": "Money Express (Groupe Chaka)",
+    "sector": "FinTech",
+    "period": "2018 - 2019",
+    "role": "Développeur Web",
+    "summary": "Conception et développement d'une plateforme de transfert d'argent en marque blanche, en lien étroit avec les équipes métier.",
+    "context": "Money Express, filiale du Groupe Chaka, propose des services de transfert d'argent. Une plateforme en marque blanche permet de proposer ce service sous l'identité de différents partenaires.",
+    "challenge": "Concevoir une plateforme unique, personnalisable par marque, à partir de besoins métier encore à cadrer.",
+    "approach": [
+      {
+        "title": "Cadrage métier",
+        "detail": "Collaboration étroite avec les équipes métier pour cadrer les besoins."
+      },
+      {
+        "title": "Conception et développement",
+        "detail": "Plateforme développée en PHP avec un front AngularJS."
+      },
+      {
+        "title": "Évolution",
+        "detail": "Évolution des plateformes existantes en parallèle."
+      }
+    ],
+    "outcomes": [
+      "Plateforme de transfert d'argent en marque blanche conçue et développée",
+      "Première expérience FinTech, socle des projets de paiement qui ont suivi"
+    ],
+    "stack": [
+      "PHP",
+      "AngularJS"
+    ]
+  }
+]

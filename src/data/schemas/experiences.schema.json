@@ -1,0 +1,79 @@
+{
+  "type": "array",
+  "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "id",
+      "role",
+      "company",
+      "location",
+      "remote",
+      "start",
+      "end",
+      "highlights",
+      "stack",
+      "sector",
+      "caseStudySlug"
+    ],
+    "properties": {
+      "id": {
+        "type": "string",
+        "minLength": 1
+      },
+      "role": {
+        "type": "string",
+        "minLength": 1
+      },
+      "company": {
+        "type": "string"
+      },
+      "location": {
+        "type": "string",
+        "minLength": 1
+      },
+      "remote": {
+        "type": "boolean"
+      },
+      "start": {
+        "type": "string",
+        "pattern": "^\\d{4}-\\d{2}$"
+      },
+      "end": {
+        "anyOf": [
+          {
+            "type": "string",
+            "pattern": "^\\d{4}-\\d{2}$"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "highlights": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "stack": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "sector": {
+        "type": "string",
+        "minLength": 1
+      },
+      "caseStudySlug": {
+        "type": [
+          "string",
+          "null"
+        ]
+      }
+    }
+  }
+}

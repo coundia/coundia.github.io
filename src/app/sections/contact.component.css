@@ -1,0 +1,152 @@
+/* Seul grand aplat d'accent du site. Le formulaire est posé sur une carte pleine (contrastes des erreurs). */
+.contact {
+  padding-block: var(--space-9);
+  background: var(--color-accent);
+  color: var(--color-on-accent);
+}
+
+.grid {
+  display: grid;
+  gap: var(--space-7);
+}
+
+.intro {
+  display: grid;
+  align-content: start;
+  gap: var(--space-5);
+}
+
+.intro .body-l {
+  max-width: 46ch;
+}
+
+.facts {
+  display: grid;
+  gap: var(--space-4);
+  margin: var(--space-4) 0 0;
+}
+
+.facts dd {
+  margin: var(--space-1) 0 0;
+  font-weight: 500;
+}
+
+.direct {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+}
+
+.direct a {
+  color: inherit;
+  text-underline-offset: 4px;
+}
+
+.direct a:focus-visible,
+.intro :focus-visible {
+  outline-color: var(--color-on-accent);
+}
+
+.card {
+  display: grid;
+  gap: var(--space-5);
+  padding: var(--space-6);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface-1);
+  color: var(--color-text);
+  box-shadow: 8px 8px 0 var(--color-on-accent);
+}
+
+.row {
+  display: grid;
+  gap: var(--space-5);
+}
+
+.field {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.field label {
+  font-size: var(--fs-small);
+  font-weight: 500;
+}
+
+.field input,
+.field select,
+.field textarea {
+  width: 100%;
+  min-height: 48px;
+  padding: var(--space-3) var(--space-4);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-sm);
+  background: var(--color-bg);
+  color: var(--color-text);
+  font: inherit;
+}
+
+.field textarea {
+  resize: vertical;
+  min-height: 140px;
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  outline: none;
+  border: 2px solid var(--color-accent);
+  padding: calc(var(--space-3) - 1px) calc(var(--space-4) - 1px);
+}
+
+.field--invalid input,
+.field--invalid textarea {
+  border: 2px solid var(--color-error);
+}
+
+.field__error {
+  color: var(--color-error);
+  font-size: var(--fs-small);
+}
+
+.field__error::before {
+  content: '⚠ ';
+}
+
+.trap {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.submit {
+  justify-self: start;
+}
+
+.result {
+  padding: var(--space-4);
+  border-left: 4px solid var(--color-success);
+  background: var(--color-surface-2);
+}
+
+.result--error {
+  border-left-color: var(--color-error);
+}
+
+@media (min-width: 768px) {
+  .row {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 1024px) {
+  .contact {
+    padding-block: var(--space-10);
+  }
+
+  .grid {
+    grid-template-columns: 5fr 7fr;
+    gap: var(--space-8);
+  }
+}

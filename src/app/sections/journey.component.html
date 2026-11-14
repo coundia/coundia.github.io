@@ -1,0 +1,74 @@
+<section id="journey" class="section" aria-labelledby="journey-title">
+  <div class="container">
+    <app-section-header
+      index="02"
+      headingId="journey-title"
+      [eyebrow]="t().sections.journey"
+      [title]="t().headings.journey"
+    />
+
+    <div class="timeline">
+      <span class="timeline__track" aria-hidden="true"><span class="timeline__progress"></span></span>
+      <ol class="timeline__list">
+        @for (exp of experiences(); track exp.id) {
+          <li class="step" [class.step--active]="active() === exp.id" [attr.data-id]="exp.id">
+            <span class="step__dot" aria-hidden="true"></span>
+            <div class="step__body">
+              <div class="step__meta">
+                <p class="mono step__date">{{ content.formatMonth(exp.start) }} → {{ content.formatMonth(exp.end) }}</p>
+                <p class="mono muted">{{ exp.location }}</p>
+                @if (exp.remote) {
+                  <span class="tag tag--remote">{{ t().journey.remote }}</span>
+                }
+              </div>
+              <div class="step__main">
+                <h3 class="h4">{{ exp.role }}</h3>
+                <p class="step__company">
+                  @if (exp.company) {
+                    <strong>{{ exp.company }}</strong> ·
+                  }
+                  <span class="muted">{{ exp.sector }}</span>
+                </p>
+                @if (exp.highlights.length) {
+                  <ul class="step__highlights">
+                    @for (h of exp.highlights; track h) {
+                      <li>{{ h }}</li>
+                    }
+                  </ul>
+                }
+                @if (exp.stack.length) {
+                  <ul class="tag-list">
+                    @for (tag of exp.stack; track tag) {
+                      <li class="tag">{{ tag }}</li>
+                    }
+                  </ul>
+                }
+                @if (exp.caseStudySlug) {
+                  <a class="link" [routerLink]="content.caseStudyPath(exp.caseStudySlug)"
+                    >{{ t().journey.readCase }} <span aria-hidden="true">→</span></a
+                  >
+                }
+              </div>
+            </div>
+          </li>
+        }
+
+        @for (edu of education(); track edu.id) {
+          <li class="step" [class.step--active]="active() === edu.id" [attr.data-id]="edu.id">
+            <span class="step__dot" aria-hidden="true"></span>
+            <div class="step__body">
+              <div class="step__meta">
+                <p class="mono step__date">{{ content.formatMonth(edu.start) }} → {{ content.formatMonth(edu.end) }}</p>
+                <p class="mono muted">{{ t().journey.education }}</p>
+              </div>
+              <div class="step__main">
+                <h3 class="h4">{{ edu.degree }}</h3>
+                <p class="step__company"><strong>{{ edu.school }}</strong> · {{ edu.location }}</p>
+              </div>
+            </div>
+          </li>
+        }
+      </ol>
+    </div>
+  </div>
+</section>

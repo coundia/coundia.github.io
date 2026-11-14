@@ -1,0 +1,88 @@
+[
+  {
+    "id": "consultant",
+    "role": "Consultant IT",
+    "company": "",
+    "location": "Sénégal",
+    "remote": false,
+    "start": "2025-03",
+    "end": null,
+    "highlights": [],
+    "stack": [],
+    "sector": "Conseil",
+    "caseStudySlug": null
+  },
+  {
+    "id": "devalto",
+    "role": "Développeur Full Stack",
+    "company": "DevAlto",
+    "location": "Québec, Canada",
+    "remote": true,
+    "start": "2022-06",
+    "end": "2025-03",
+    "highlights": [
+      "Évolution d'une plateforme SaaS multi-tenant de suivi et d'évaluation de projets",
+      "Optimisation des imports de fichiers volumineux",
+      "Participation aux revues de code et à la QA"
+    ],
+    "stack": [
+      "Angular",
+      "Microservices",
+      "REST",
+      "Docker",
+      "PHP",
+      "GitHub Actions",
+      "Selenium",
+      "ExtJS",
+      "DDD",
+      "Clean Architecture"
+    ],
+    "sector": "SaaS - suivi-évaluation",
+    "caseStudySlug": "imports-fichiers-volumineux"
+  },
+  {
+    "id": "atps",
+    "role": "Ingénieur Intégration",
+    "company": "ATPS SA",
+    "location": "Dakar, Sénégal",
+    "remote": false,
+    "start": "2019-05",
+    "end": "2022-06",
+    "highlights": [
+      "Migration des web services SOAP vers REST pour les offres de transfert, recharge et encaissement",
+      "Conception, développement et intégration des plateformes de paiement Upay App, Upay Business et Proximo avec les partenaires financiers",
+      "Évolution des plateformes existantes"
+    ],
+    "stack": [
+      "Angular",
+      "Spring Boot",
+      "REST",
+      "SOAP",
+      "GitLab CI",
+      "Docker",
+      "PHP"
+    ],
+    "sector": "FinTech",
+    "caseStudySlug": "plateformes-paiement-upay"
+  },
+  {
+    "id": "money-express",
+    "role": "Développeur Web",
+    "company": "Money Express (Groupe Chaka)",
+    "location": "Sénégal",
+    "remote": false,
+    "start": "2018-03",
+    "end": "2019-05",
+    "highlights": [
+      "Conception et développement d'une plateforme de transfert d'argent en marque blanche",
+      "Évolution des plateformes existantes",
+      "Cadrage des besoins avec les équipes métier"
+    ],
+    "stack": [
+      "PHP",
+      "AngularJS"
+    ],
+    "sector": "FinTech",
+    "caseStudySlug": "transfert-marque-blanche"
+  }
+]

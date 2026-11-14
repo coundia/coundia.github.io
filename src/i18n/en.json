@@ -1,0 +1,120 @@
+{
+  "meta": {
+    "homeTitle": "Papa Coundia - Senior Full Stack Developer, Angular & Spring Boot",
+    "homeDescription": "Senior full stack developer, Angular & Spring Boot (8+ years): payment platforms, money transfer, multi-tenant SaaS. Based in Senegal, available remotely.",
+    "cvTitle": "Resume - Papa Coundia",
+    "notFoundTitle": "Page not found - Papa Coundia"
+  },
+  "nav": {
+    "skip": "Skip to content",
+    "journey": "Journey",
+    "work": "Work",
+    "openSource": "Open source",
+    "contact": "Get in touch",
+    "menu": "Menu",
+    "close": "Close",
+    "language": "Français",
+    "languageShort": "FR",
+    "themeToLight": "Switch to light theme",
+    "themeToDark": "Switch to dark theme",
+    "home": "Home"
+  },
+  "hero": {
+    "cta": "Get in touch",
+    "cv": "View resume",
+    "scroll": "Scroll",
+    "sceneLabel": "Architecture diagram: Angular apps, API gateway, Spring Boot microservices, RabbitMQ, PostgreSQL and event store, financial partners, CI/CD pipeline.",
+    "explore": "Explore the architecture",
+    "overview": "Overview",
+    "windowTitle": "platform / architecture",
+    "layer": "layer"
+  },
+  "sections": {
+    "stats": "At a glance",
+    "expertise": "Expertise",
+    "journey": "Journey",
+    "work": "Case studies",
+    "openSource": "Open source",
+    "stack": "Stack",
+    "testimonials": "Testimonials",
+    "contact": "Contact",
+    "about": "About"
+  },
+  "headings": {
+    "expertise": "From Angular front ends to Spring microservices.",
+    "journey": "Eight years of critical systems, from Senegal to Canada.",
+    "work": "Projects where reliability is not negotiable.",
+    "openSource": "Public code, so you can judge for yourself.",
+    "stack": "Everyday tools.",
+    "contact": "A project, a contract, a role? Let's talk."
+  },
+  "journey": {
+    "present": "present",
+    "remote": "Remote",
+    "education": "Education",
+    "readCase": "Read the case study"
+  },
+  "work": {
+    "read": "Read the case study",
+    "context": "Context",
+    "challenge": "Challenge",
+    "approach": "Approach",
+    "outcomes": "Outcomes",
+    "stack": "Stack",
+    "role": "Role",
+    "period": "Period",
+    "client": "Client",
+    "back": "All case studies",
+    "next": "Next case study"
+  },
+  "openSource": {
+    "view": "View on GitHub",
+    "all": "All my repositories"
+  },
+  "contact": {
+    "intro": "I reply within two business days. Describe your need in a few lines: context, timeline, and what you expect from me.",
+    "name": "Name",
+    "email": "Email",
+    "company": "Company (optional)",
+    "type": "Request type",
+    "types": {
+      "freelance": "Freelance contract",
+      "job": "Role (full-time / remote)",
+      "consulting": "Consulting / audit",
+      "other": "Other"
+    },
+    "budget": "Indicative budget (optional)",
+    "message": "Message",
+    "submit": "Send",
+    "sending": "Sending…",
+    "success": "Thank you, your message is on its way. I'll get back to you shortly.",
+    "error": "Sending failed. Please try again, or write to me directly.",
+    "required": "This field is required.",
+    "invalidEmail": "Invalid email address.",
+    "minMessage": "A few more words, please (at least 20 characters).",
+    "unavailable": "The form is not connected yet. Please reach me on GitHub in the meantime.",
+    "direct": "Or directly",
+    "location": "Location",
+    "timezone": "Time zone"
+  },
+  "cv": {
+    "print": "Print / save as PDF",
+    "experience": "Experience",
+    "education": "Education",
+    "skills": "Skills",
+    "openSource": "Open source",
+    "back": "Back to the site"
+  },
+  "notFound": {
+    "title": "This page doesn't exist.",
+    "text": "The link may be outdated, or the address may contain a typo.",
+    "home": "Back to home"
+  },
+  "footer": {
+    "built": "Designed and built by Papa Coundia - Angular, GSAP, Three.js.",
+    "source": "Source code"
+  },
+  "expertise": {
+    "inScene": "In the diagram"
+  }
+}

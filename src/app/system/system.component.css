@@ -1,0 +1,106 @@
+:host {
+  display: block;
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.fallback,
+.stage {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+:host:has(.stage.is-live) .fallback {
+  visibility: hidden;
+}
+
+.grid {
+  fill: none;
+  stroke: var(--scene-grid);
+  stroke-width: 0.02;
+}
+
+.link {
+  fill: none;
+  stroke: var(--scene-link);
+  stroke-width: 0.07;
+  stroke-linejoin: round;
+}
+
+.link.is-active {
+  stroke: var(--scene-link-active);
+}
+
+.node path {
+  stroke: var(--scene-node-edge);
+  stroke-width: 0.02;
+  stroke-linejoin: round;
+}
+
+.node .top {
+  fill: var(--scene-node-top);
+}
+
+.node .left {
+  fill: var(--scene-node-left);
+}
+
+.node .right {
+  fill: var(--scene-node-right);
+}
+
+.node .screen {
+  fill: var(--scene-screen);
+}
+
+.node.is-active path {
+  stroke: var(--scene-active-edge);
+}
+
+.node.is-active .top,
+.node.is-active .screen {
+  fill: var(--scene-active-top);
+}
+
+.node.is-active .left {
+  fill: var(--scene-active-left);
+}
+
+.node.is-active .right {
+  fill: var(--scene-active-right);
+}
+
+.label rect {
+  fill: var(--color-bg);
+  stroke: var(--color-border);
+  stroke-width: 0.015;
+}
+
+.label text {
+  fill: var(--color-text-muted);
+  font-family: var(--font-mono);
+  font-size: 0.22px;
+  text-transform: uppercase;
+}
+
+.label.is-active rect {
+  fill: var(--color-accent);
+  stroke: var(--color-accent);
+}
+
+.label.is-active text {
+  fill: var(--color-on-accent);
+}
+
+@media (max-width: 767.98px) {
+  .label {
+    visibility: hidden;
+  }
+}
+
+.label.is-hidden {
+  visibility: hidden;
+}

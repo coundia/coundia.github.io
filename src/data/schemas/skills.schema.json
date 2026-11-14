@@ -1,0 +1,2 @@
+{ "type":"array","items":{"type":"object","additionalProperties":false,"required":["id","domain","items"],
+  "properties":{"id":{"type":"string","minLength":1},"domain":{"type":"string","minLength":1},"items":{"type":"array","items":{"type":"string","minLength":1}}}}}

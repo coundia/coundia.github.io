@@ -1,0 +1,26 @@
+[
+  {
+    "id": "frontend",
+    "title": "Angular front end",
+    "description": "Maintainable Angular applications: feature-based architecture, reusable components, complex business forms, evolving existing codebases (AngularJS, ExtJS).",
+    "items": ["Angular", "TypeScript", "RxJS", "AngularJS", "ExtJS"]
+  },
+  {
+    "id": "backend",
+    "title": "Spring Boot back end",
+    "description": "REST APIs and Spring Boot microservices designed with DDD and Clean Architecture; CQRS and event sourcing when the domain calls for it.",
+    "items": ["Java", "Spring Boot", "REST", "Microservices", "DDD", "CQRS"]
+  },
+  {
+    "id": "payment",
+    "title": "Integration & payments",
+    "description": "Money transfer, top-up and payment platforms integrated with financial partners; migration of SOAP services to REST.",
+    "items": ["FinTech", "SOAP → REST", "Financial partners", "White label"]
+  },
+  {
+    "id": "quality",
+    "title": "Quality & DevOps",
+    "description": "Continuous integration, containers, automated tests, code reviews and QA in distributed agile teams.",
+    "items": ["Docker", "GitHub Actions", "GitLab CI", "Selenium", "Agile"]
+  }
+]

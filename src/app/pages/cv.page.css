@@ -1,0 +1,168 @@
+/* Le CV est une « feuille » claire et pleine, quel que soit le thème, pour un rendu PDF fidèle. */
+:host {
+  display: block;
+  padding-top: calc(var(--header-h) + var(--space-6));
+  padding-bottom: var(--space-9);
+}
+
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  margin-bottom: var(--space-6);
+}
+
+.back {
+  color: var(--color-text-muted);
+  text-decoration: none;
+}
+
+.cv {
+  --cv-ink: #0B0D12;
+  --cv-muted: #4A5363;
+  --cv-accent: #1D4ED8;
+  --cv-rule: #D9DFE8;
+  --cv-paper: #FFFFFF;
+  max-width: 210mm;
+  margin-inline: auto;
+  padding: 16mm 16mm 12mm;
+  background: var(--cv-paper);
+  color: var(--cv-ink);
+  font-size: 10.5pt;
+  line-height: 1.5;
+  border: 1px solid var(--color-border);
+}
+
+.cv__head {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 6mm;
+  padding-bottom: 5mm;
+  border-bottom: 2px solid var(--cv-accent);
+}
+
+.cv__name {
+  font-family: var(--font-display);
+  font-size: 26pt;
+  line-height: 1;
+}
+
+.cv__title {
+  margin-top: 2mm;
+  color: var(--cv-accent);
+  font-weight: 600;
+}
+
+.cv__contact {
+  display: grid;
+  gap: 1mm;
+  color: var(--cv-muted);
+  font-size: 9.5pt;
+  text-align: right;
+}
+
+.cv__section {
+  padding-block: 4mm;
+  border-bottom: 1px solid var(--cv-rule);
+  break-inside: avoid-page;
+}
+
+.cv__section:last-child {
+  border-bottom: 0;
+}
+
+.cv__lead {
+  font-size: 11.5pt;
+}
+
+.cv__h2 {
+  margin-bottom: 3mm;
+  font-family: var(--font-mono);
+  font-size: 9pt;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--cv-accent);
+}
+
+.cv__item {
+  padding-block: 2mm;
+  break-inside: avoid;
+}
+
+.cv__item-head {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 2mm 6mm;
+}
+
+.cv__h3 {
+  font-size: 11pt;
+}
+
+.cv__date,
+.cv__where,
+.cv__stack {
+  color: var(--cv-muted);
+  font-size: 9.5pt;
+}
+
+.cv__list {
+  display: grid;
+  gap: 1mm;
+  margin-top: 1.5mm;
+  padding-left: 4mm;
+  list-style: square;
+}
+
+.cv__stack {
+  margin-top: 1.5mm;
+  font-family: var(--font-mono);
+  font-size: 8.5pt;
+}
+
+.cv__skills {
+  display: grid;
+  gap: 1.5mm;
+  margin: 0;
+}
+
+.cv__skills div {
+  display: grid;
+  grid-template-columns: 42mm 1fr;
+  gap: 4mm;
+}
+
+.cv__skills dt {
+  font-weight: 600;
+}
+
+.cv__skills dd {
+  margin: 0;
+  color: var(--cv-muted);
+}
+
+@media print {
+  :host {
+    padding: 0;
+  }
+
+  .no-print {
+    display: none;
+  }
+
+  .cv {
+    max-width: none;
+    padding: 0;
+    border: 0;
+  }
+}
+
+@page {
+  size: A4;
+  margin: 14mm;
+}

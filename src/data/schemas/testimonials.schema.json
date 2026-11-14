@@ -1,0 +1,2 @@
+{ "type":"array","items":{"type":"object","additionalProperties":false,"required":["id","quote","name","position","company"],
+  "properties":{"id":{"type":"string","minLength":1},"quote":{"type":"string","minLength":1},"name":{"type":"string","minLength":1},"position":{"type":"string","minLength":1},"company":{"type":"string","minLength":1},"url":{"type":"string","pattern":"^https://"}}}}

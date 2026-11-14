@@ -1,0 +1,2 @@
+{ "type":"array","items":{"type":"object","additionalProperties":false,"required":["id","name","url","description","stack","highlight"],
+  "properties":{"id":{"type":"string","minLength":1},"name":{"type":"string","minLength":1},"url":{"type":"string","pattern":"^https://github\\.com/"},"description":{"type":"string","minLength":1},"stack":{"type":"array","items":{"type":"string","minLength":1}},"highlight":{"type":"string","minLength":1}}}}

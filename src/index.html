@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="fr" data-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <title>Papa Coundia - Développeur Full Stack Senior Angular & Spring Boot</title>
+    <base href="/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#0B0D12" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
+    <link rel="preconnect" href="https://cdn.fontshare.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://api.fontshare.com/v2/css?f[]=clash-display@500,600&display=swap"
+    />
+    <script>
+      // Thème (avant le premier rendu) + masquage de l'intro du hero, avec filet de sécurité.
+      (function () {
+        var root = document.documentElement;
+        var theme = null;
+        try {
+          theme = localStorage.getItem('theme');
+        } catch (e) {}
+        if (theme !== 'light' && theme !== 'dark') {
+          theme = matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+        }
+        root.setAttribute('data-theme', theme);
+        if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+          root.classList.add('motion-pending');
+          setTimeout(function () {
+            root.classList.remove('motion-pending');
+          }, 2500);
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <app-root></app-root>
+  </body>
+</html>

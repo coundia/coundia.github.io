@@ -1,0 +1,120 @@
+{
+  "meta": {
+    "homeTitle": "Papa Coundia - Développeur Full Stack Senior Angular & Spring Boot",
+    "homeDescription": "Développeur full stack senior Angular & Spring Boot (8+ ans) : plateformes de paiement, transfert d'argent, SaaS multi-tenant. Basé au Sénégal, disponible en remote.",
+    "cvTitle": "CV - Papa Coundia",
+    "notFoundTitle": "Page introuvable - Papa Coundia"
+  },
+  "nav": {
+    "skip": "Aller au contenu",
+    "journey": "Parcours",
+    "work": "Projets",
+    "openSource": "Open source",
+    "contact": "Me contacter",
+    "menu": "Menu",
+    "close": "Fermer",
+    "language": "English",
+    "languageShort": "EN",
+    "themeToLight": "Passer au thème clair",
+    "themeToDark": "Passer au thème sombre",
+    "home": "Accueil"
+  },
+  "hero": {
+    "cta": "Me contacter",
+    "cv": "Voir le CV",
+    "scroll": "Défiler",
+    "sceneLabel": "Schéma d'architecture : applications Angular, API Gateway, microservices Spring Boot, RabbitMQ, PostgreSQL et event store, partenaires financiers, chaîne CI/CD.",
+    "explore": "Explorer l'architecture",
+    "overview": "Vue d'ensemble",
+    "windowTitle": "plateforme / architecture",
+    "layer": "couche"
+  },
+  "sections": {
+    "stats": "En bref",
+    "expertise": "Expertise",
+    "journey": "Parcours",
+    "work": "Études de cas",
+    "openSource": "Open source",
+    "stack": "Stack",
+    "testimonials": "Témoignages",
+    "contact": "Contact",
+    "about": "À propos"
+  },
+  "headings": {
+    "expertise": "Du front Angular aux microservices Spring.",
+    "journey": "Huit ans de systèmes critiques, du Sénégal au Canada.",
+    "work": "Des projets où la fiabilité n'est pas négociable.",
+    "openSource": "Du code public, pour juger sur pièce.",
+    "stack": "Les outils du quotidien.",
+    "contact": "Un projet, une mission, un poste ? Parlons-en."
+  },
+  "journey": {
+    "present": "aujourd'hui",
+    "remote": "Remote",
+    "education": "Formation",
+    "readCase": "Lire l'étude de cas"
+  },
+  "work": {
+    "read": "Lire l'étude de cas",
+    "context": "Contexte",
+    "challenge": "Enjeu",
+    "approach": "Approche",
+    "outcomes": "Résultats",
+    "stack": "Stack",
+    "role": "Rôle",
+    "period": "Période",
+    "client": "Client",
+    "back": "Toutes les études de cas",
+    "next": "Étude de cas suivante"
+  },
+  "openSource": {
+    "view": "Voir sur GitHub",
+    "all": "Tous mes dépôts"
+  },
+  "contact": {
+    "intro": "Je réponds sous 48 heures ouvrées. Décrivez votre besoin en quelques lignes : contexte, délais, et ce que vous attendez de moi.",
+    "name": "Nom",
+    "email": "E-mail",
+    "company": "Entreprise (facultatif)",
+    "type": "Type de demande",
+    "types": {
+      "freelance": "Mission freelance",
+      "job": "Poste (CDI / remote)",
+      "consulting": "Conseil / audit",
+      "other": "Autre"
+    },
+    "budget": "Budget indicatif (facultatif)",
+    "message": "Message",
+    "submit": "Envoyer",
+    "sending": "Envoi…",
+    "success": "Merci, votre message est bien parti. Je reviens vers vous rapidement.",
+    "error": "L'envoi a échoué. Réessayez, ou écrivez-moi directement.",
+    "required": "Ce champ est obligatoire.",
+    "invalidEmail": "Adresse e-mail invalide.",
+    "minMessage": "Quelques mots de plus, s'il vous plaît (20 caractères minimum).",
+    "unavailable": "Le formulaire n'est pas encore relié. Contactez-moi via GitHub en attendant.",
+    "direct": "Ou directement",
+    "location": "Localisation",
+    "timezone": "Fuseau horaire"
+  },
+  "cv": {
+    "print": "Imprimer / enregistrer en PDF",
+    "experience": "Expérience",
+    "education": "Formation",
+    "skills": "Compétences",
+    "openSource": "Open source",
+    "back": "Retour au site"
+  },
+  "notFound": {
+    "title": "Cette page n'existe pas.",
+    "text": "Le lien est peut-être ancien, ou l'adresse contient une faute.",
+    "home": "Retour à l'accueil"
+  },
+  "footer": {
+    "built": "Conçu et développé par Papa Coundia - Angular, GSAP, Three.js.",
+    "source": "Code source"
+  },
+  "expertise": {
+    "inScene": "Dans le schéma"
+  }
+}
