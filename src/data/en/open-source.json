@@ -1,10 +1,30 @@
 [
   {
+    "id": "buntu",
+    "name": "buntu",
+    "url": "https://github.com/coundia/buntu",
+    "description": "Universal stream player and media manager for Apple, Android/Android TV and Samsung Tizen: shared Rust core, SQLite WAL + FTS5, native hardware playback engines and 350+ tests.",
+    "stack": [
+      "Rust",
+      "Swift",
+      "Kotlin",
+      "TypeScript",
+      "SolidJS"
+    ],
+    "highlight": "Flagship · Recent · Cross-platform"
+  },
+  {
     "id": "spring-microservices-starter",
     "name": "spring-microservices-starter",
     "url": "https://github.com/coundia/spring-microservices-starter",
     "description": "Multi-module Maven Spring Boot project built on DDD and CQRS, with Axon Framework, RabbitMQ and PostgreSQL as the event store.",
-    "stack": ["Java", "Spring Boot", "Axon", "RabbitMQ", "PostgreSQL"],
+    "stack": [
+      "Java",
+      "Spring Boot",
+      "Axon",
+      "RabbitMQ",
+      "PostgreSQL"
+    ],
     "highlight": "DDD · CQRS · Event sourcing"
   },
   {
@@ -12,7 +32,12 @@
     "name": "cnd-api-maker",
     "url": "https://github.com/coundia/cnd-api-maker",
     "description": "Monorepo for a framework-agnostic API generator: from definitions, it generates multi-tenant resources, RBAC, migrations and tests for Laravel and Symfony.",
-    "stack": ["PHP", "Laravel", "Symfony", "API Platform"],
+    "stack": [
+      "PHP",
+      "Laravel",
+      "Symfony",
+      "API Platform"
+    ],
     "highlight": "Code generation · Multi-tenant · RBAC"
   },
   {
@@ -20,7 +45,10 @@
     "name": "ddd-maker-bundle",
     "url": "https://github.com/coundia/ddd-maker-bundle",
     "description": "Symfony bundle that automates the generation of a Domain-Driven Design structure.",
-    "stack": ["PHP", "Symfony"],
+    "stack": [
+      "PHP",
+      "Symfony"
+    ],
     "highlight": "DDD · Tooling"
   },
   {
@@ -28,7 +56,10 @@
     "name": "selenium-java-pcoundia",
     "url": "https://github.com/coundia/selenium-java-pcoundia",
     "description": "Automated end-to-end tests in Java with Selenium.",
-    "stack": ["Java", "Selenium"],
+    "stack": [
+      "Java",
+      "Selenium"
+    ],
     "highlight": "End-to-end tests"
   }
 ]

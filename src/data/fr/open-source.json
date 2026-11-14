@@ -1,10 +1,30 @@
 [
   {
+    "id": "buntu",
+    "name": "buntu",
+    "url": "https://github.com/coundia/buntu",
+    "description": "Lecteur de flux et gestionnaire de médias universel pour Apple, Android/Android TV et Samsung Tizen : cœur métier Rust partagé, SQLite WAL + FTS5, moteurs de lecture matériels natifs et plus de 350 tests.",
+    "stack": [
+      "Rust",
+      "Swift",
+      "Kotlin",
+      "TypeScript",
+      "SolidJS"
+    ],
+    "highlight": "Projet phare · Récent · Multi-plateforme"
+  },
+  {
     "id": "spring-microservices-starter",
     "name": "spring-microservices-starter",
     "url": "https://github.com/coundia/spring-microservices-starter",
     "description": "Projet Maven multi-modules Spring Boot construit selon le DDD et le CQRS, avec Axon Framework, RabbitMQ et PostgreSQL comme event store.",
-    "stack": ["Java", "Spring Boot", "Axon", "RabbitMQ", "PostgreSQL"],
+    "stack": [
+      "Java",
+      "Spring Boot",
+      "Axon",
+      "RabbitMQ",
+      "PostgreSQL"
+    ],
     "highlight": "DDD · CQRS · Event sourcing"
   },
   {
@@ -12,7 +32,12 @@
     "name": "cnd-api-maker",
     "url": "https://github.com/coundia/cnd-api-maker",
     "description": "Monorepo d'un générateur d'API agnostique du framework : à partir de définitions, il génère ressources multi-tenant, RBAC, migrations et tests pour Laravel et Symfony.",
-    "stack": ["PHP", "Laravel", "Symfony", "API Platform"],
+    "stack": [
+      "PHP",
+      "Laravel",
+      "Symfony",
+      "API Platform"
+    ],
     "highlight": "Génération de code · Multi-tenant · RBAC"
   },
   {
@@ -20,7 +45,10 @@
     "name": "ddd-maker-bundle",
     "url": "https://github.com/coundia/ddd-maker-bundle",
     "description": "Bundle Symfony qui automatise la génération d'une structure Domain-Driven Design.",
-    "stack": ["PHP", "Symfony"],
+    "stack": [
+      "PHP",
+      "Symfony"
+    ],
     "highlight": "DDD · Outillage"
   },
   {
@@ -28,7 +56,10 @@
     "name": "selenium-java-pcoundia",
     "url": "https://github.com/coundia/selenium-java-pcoundia",
     "description": "Tests de bout en bout automatisés en Java avec Selenium.",
-    "stack": ["Java", "Selenium"],
+    "stack": [
+      "Java",
+      "Selenium"
+    ],
     "highlight": "Tests de bout en bout"
   }
 ]
