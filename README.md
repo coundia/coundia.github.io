@@ -60,5 +60,15 @@ src/app/
 
 ## Déploiement
 
-`.github/workflows/deploy.yml` construit et publie sur GitHub Pages à chaque push sur `main`
-(réglage du dépôt : *Settings → Pages → Source : GitHub Actions*).
+Le site est servi par **GitHub Pages** depuis la branche `gh-pages` : https://coundia.github.io/
+
+Mise à jour du site (après `npm run build`) :
+
+```bash
+rm -rf /tmp/pages && mkdir /tmp/pages
+cp -R dist/coundia-portfolio/browser/. /tmp/pages/ && rm -f /tmp/pages/index.csr.html
+cd /tmp/pages && git init -b gh-pages && git add -A && git commit -m "Publication du site"
+git push --force https://github.com/coundia/coundia.github.io.git gh-pages
+```
+
+`.github/workflows/deploy.yml` (non versionné pour l'instant) automatise ces étapes avec GitHub Actions. Pour l'utiliser : accorder le scope `workflow` à `gh` (`gh auth refresh -s workflow`), commiter le fichier, puis passer la source de Pages sur « GitHub Actions » (*Settings → Pages*).
